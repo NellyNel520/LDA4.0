@@ -38,7 +38,7 @@ const Container = styled.div`
 `
 
 const Image = styled.img`
-	height: 100%;
+	height: 90%;
 	width: 100%;
 	z-index: 2;
 `
