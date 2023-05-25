@@ -1,7 +1,7 @@
 import React from 'react'
 import { Add, Remove } from '@mui/icons-material'
 import styled from 'styled-components'
-// import Rating from '../components/Rating'
+import Rating from '../components/Rating'
 import { mobile } from '../services/responsive'
 import { useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
@@ -172,7 +172,7 @@ const ProductDetails = () => {
 					<Title className="text-6xl text-blue-400">{product.title}</Title>
 
 					<div>
-						{/* <Rating rating={product.rating} numReviews={product.numReviews} /> */}
+						<Rating rating={product.rating} numReviews={product.numReviews} />
 					</div>
 
 					<Desc className="text-white text-xl">
