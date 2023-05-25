@@ -9,6 +9,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Products from './pages/Products'
 import Cart from './pages/Cart'
+import ProductDetails from './pages/ProductDetails'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { logout } from './redux/userRedux'
@@ -40,6 +41,7 @@ function App() {
 					<Route path="/products" element={<Products />} />
 					<Route path="/cart" element={<Cart />} />
 					<Route path="/products/:category" element={<Products />} />
+					<Route path="/product/:id" element={<ProductDetails />} />
 				</Routes>
 			</main>
 			<Footer />
