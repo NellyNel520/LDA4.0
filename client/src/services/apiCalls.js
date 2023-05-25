@@ -14,6 +14,20 @@ import {
   addOrderSuccess,
   addOrderFailure,
 } from '../redux/orderRedux'
+import {
+  getProductFailure,
+  getProductStart,
+  getProductSuccess,
+  deleteProductFailure,
+  deleteProductStart,
+  deleteProductSuccess,
+  updateProductFailure,
+  updateProductStart,
+  updateProductSuccess,
+  addProductFailure,
+  addProductStart,
+  addProductSuccess,
+} from "../redux/productRedux";
 import { publicRequest, userRequest } from './requestMethods'
 import { useEffect, useState } from 'react'
 
@@ -36,4 +50,15 @@ export const registerUser = async (data) => {
 		throw error
 	}
 }
+
+
+export const getProducts = async (dispatch) => {
+  dispatch(getProductStart());
+  try {
+    const res = await publicRequest.get("/products/");
+    dispatch(getProductSuccess(res.data));
+  } catch (err) {
+    dispatch(getProductFailure());
+  }
+};
 
