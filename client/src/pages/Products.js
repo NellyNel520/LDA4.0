@@ -54,7 +54,7 @@ const Products = () => {
   
 
   return (
-    <div className=''>
+    <div className='w-[100vw]'>
       {/* <div className='text-6xl text-center pt-5 text-blue-400 font-play'>Products</div> */}
       <div className='wrapper text-center'>
       <div className='top font-play'> Products</div>

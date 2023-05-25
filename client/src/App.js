@@ -8,6 +8,7 @@ import About from './pages/About'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Products from './pages/Products'
+import Cart from './pages/Cart'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { logout } from './redux/userRedux'
@@ -37,6 +38,7 @@ function App() {
 					<Route path="/login" element={<Login />} />
 					<Route path="/register" element={<Register />} />
 					<Route path="/products" element={<Products />} />
+					<Route path="/cart" element={<Cart />} />
 					<Route path="/products/:category" element={<Products />} />
 				</Routes>
 			</main>
