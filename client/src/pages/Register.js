@@ -1,6 +1,36 @@
 import React from 'react'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { registerUser } from '../services/apiCalls'
+import { Link } from 'react-router-dom'
 
 const Register = () => {
+
+	let navigate = useNavigate()
+	const initialState = {
+		name: '',
+		email: '',
+		password: '',
+		confirmPassword: '',
+	}
+	const [formValues, setFormValues] = useState(initialState)
+
+	const handleChange = (e) => {
+		setFormValues({ ...formValues, [e.target.name]: e.target.value })
+	}
+
+	const handleSubmit = async (e) => {
+		e.preventDefault()
+		await registerUser({
+			name: formValues.name,
+			email: formValues.email,
+			password: formValues.password,
+		})
+		setFormValues(initialState)
+		navigate('/login')
+	}
+
+
 	return (
 		<div className="regContainer font-play">
 			
@@ -14,7 +44,7 @@ const Register = () => {
 							<h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
 								Create Account
 							</h1>
-							<form class="space-y-4 md:space-y-6" action="#">
+							<form class="space-y-4 md:space-y-6" action="#" onSubmit={handleSubmit}>
 								<div>
 									<label
 										for="email"
@@ -28,7 +58,9 @@ const Register = () => {
 										id="name"
 										class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 										placeholder="John Doe"
-										required=""
+										value={formValues.name}
+										onChange={handleChange}
+										required="true"
 									/>
 								</div>
 								<div>
@@ -44,7 +76,9 @@ const Register = () => {
 										id="email"
 										class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 										placeholder="name@company.com"
-										required=""
+										required="true"
+										value={formValues.email}
+										onChange={handleChange}
 									/>
 								</div>
 								<div>
@@ -60,7 +94,9 @@ const Register = () => {
 										id="password"
 										placeholder="••••••••"
 										class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-										required=""
+										required="true"
+										value={formValues.password}
+										onChange={handleChange}
 									/>
 								</div>
 								<div>
@@ -71,12 +107,14 @@ const Register = () => {
 										Confirm password
 									</label>
 									<input
-										type="confirm-password"
-										name="confirm-password"
-										id="confirm-password"
+										type="password"
+										name="confirmPassword"
+										id="confirmPassword"
 										placeholder="••••••••"
 										class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-										required=""
+										required="true"
+										value={formValues.confirmPassword}
+										onChange={handleChange}
 									/>
 								</div>
 								<div class="flex items-start">
@@ -96,7 +134,7 @@ const Register = () => {
 										>
 											I accept the{' '}
 											<a
-												class="font-medium text-primary-600 hover:underline dark:text-primary-500"
+												class="font-medium text-blue-700 hover:underline dark:text-blue-700"
 												href="#"
 											>
 												Terms and Conditions
@@ -105,16 +143,22 @@ const Register = () => {
 									</div>
 								</div>
 								<button
+								disabled={
+										!formValues.email ||
+										(!formValues.password &&
+											formValues.confirmPassword === formValues.password)
+									}
 									type="submit"
-									class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+									class="w-full text-white bg-blue-500 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
 								>
 									Create an account
 								</button>
-								<p class="text-sm font-light text-gray-500 dark:text-gray-400">
+
+								<p class="text-md font-light text-black ">
 									Already have an account?{' '}
 									<a
 										href="/login"
-										class="font-medium text-primary-600 hover:underline dark:text-primary-500"
+										class="font-medium text-blue-500 hover:underline dark:text-primary-500 "
 									>
 										Login here
 									</a>
