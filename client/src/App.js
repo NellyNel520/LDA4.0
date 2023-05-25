@@ -8,6 +8,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { logout } from './redux/userRedux'
 
 function App() {
 	const user = useSelector((state) => state.user.currentUser)
@@ -15,17 +16,17 @@ function App() {
 	const dispatch = useDispatch()
 	let navigate = useNavigate()
 
-	// const handleLogOut = (e) => {
-	// 	//Reset all auth related state and clear localStorage
-	// 	e.preventDefault()
-	// 	dispatch(logout())
-	// 	navigate('/')
-	// }
+	const handleLogOut = (e) => {
+		//Reset all auth related state and clear localStorage
+		e.preventDefault()
+		dispatch(logout())
+		navigate('/')
+	}
 
 
 	return (
 		<div className="App">
-			<Navbar user={user}/>
+			<Navbar user={user} handleLogOut={handleLogOut}/>
 			<Announcement user={user}/>
 			<main>
 				<Routes>

@@ -6,7 +6,7 @@ import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined'
 import PersonIcon from '@mui/icons-material/Person'
 import { Link } from 'react-router-dom'
 
-const Navbar = ({user}) => {
+const Navbar = ({user,  handleLogOut}) => {
 	let [open, setOpen] = useState(false)
 
 	let Links = [
@@ -50,7 +50,7 @@ const Navbar = ({user}) => {
 	        ))
 	      } */}
 
-					<Link className='md:ml-8 text-xl md:my-0 my-7' to={'/'}>
+					<Link onClick={handleLogOut} className='md:ml-8 text-xl md:my-0 my-7' to={'/'}>
 						<li className='text-blue-400 hover:text-white duration-500' >
 	            <ExitToAppOutlinedIcon />
 	          </li>
