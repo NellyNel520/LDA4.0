@@ -63,7 +63,7 @@ const Navbar = ({user,  handleLogOut}) => {
 	        <Link className='md:ml-8 text-xl md:my-0 my-7' to={'/'}>
 						<li className='text-blue-400 hover:text-white duration-500' >HOME</li>
 					</Link>
-	        <Link className='md:ml-8 text-xl md:my-0 my-7' to={'/'}>
+	        <Link className='md:ml-8 text-xl md:my-0 my-7' to={'/products'}>
 						<li className='text-blue-400 hover:text-white duration-500' >PRODUCTS</li>
 					</Link>
 	        <Link className='md:ml-8 text-xl md:my-0 my-7' to={'/'}>
@@ -119,7 +119,7 @@ const Navbar = ({user,  handleLogOut}) => {
 	        <Link className='md:ml-8 text-xl md:my-0 my-7' to={'/'}>
 						<li className='text-blue-400 hover:text-white duration-500' >HOME</li>
 					</Link>
-	        <Link className='md:ml-8 text-xl md:my-0 my-7' to={'/'}>
+	        <Link className='md:ml-8 text-xl md:my-0 my-7' to={'/products'}>
 						<li className='text-blue-400 hover:text-white duration-500' >PRODUCTS</li>
 					</Link>
 	        <Link className='md:ml-8 text-xl md:my-0 my-7' to={'/'}>

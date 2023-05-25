@@ -5,7 +5,7 @@ import '../styles/slash-title.css'
 import { useEffect, useState } from "react";
 import { BASE_URL } from '../services/requestMethods'
 
-const FeaturedProducts = ({category, filters, sort}) => {
+const AllProducts = ({category, filters, sort}) => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
@@ -14,9 +14,9 @@ const FeaturedProducts = ({category, filters, sort}) => {
     const getProducts = async () => {
       try {
         const res = await axios.get(
-          category
-            ? `${BASE_URL}/products/?category=${category}`
-            : `${BASE_URL}/products`
+          // category
+          //   ? `${BASE_URL}/products/?category=${category}`
+             `${BASE_URL}/products`
         );
         console.log(res)
         setProducts(res.data);
@@ -24,11 +24,11 @@ const FeaturedProducts = ({category, filters, sort}) => {
     };
     getProducts();
     console.log(products)
-  }, [category]);
+  }, []);
 
  // Axios call to sort by category and filter by size and color products 
  useEffect(() => {
-  category &&
+  // category &&
     setFilteredProducts(
       products.filter((item) =>
         Object.entries(filters).every(([key, value]) =>
@@ -59,20 +59,15 @@ useEffect(() => {
 
   return (
     <div>
-    <div className='wrapper text-center'>
-      <div className='top font-play'> Featured Products</div>
-      <div className='bottom font-play' aria-hidden="true"> Featured Products</div>
-    </div>
+   
     <div className='mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:ml-4 lg:grid-cols-4 xl:gap-x-8'>
-    {category
-      ? filteredProducts.map((item) => <ProductCard item={item} key={item.id} />)
-      : products
-          .slice(0, 8)
-          .map((item) => <ProductCard item={item} key={item.id} />)}
+    {
+       filteredProducts.map((item) => <ProductCard item={item} key={item.id} />)
+   }
     </div>
     
     </div>
   )
 }
 
-export default FeaturedProducts
+export default AllProducts
