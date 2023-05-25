@@ -64,7 +64,7 @@ const Slider = () => {
           onClick={() => goToSlide(slideIndex)}
           className='text-2xl cursor-pointer'
         >
-          <CircleIcon className='text-blue-500'
+          <CircleIcon className='text-blue-300'
 
           />
         </div>

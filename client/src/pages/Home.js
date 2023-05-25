@@ -2,6 +2,7 @@ import React from 'react'
 import LogoHeader from '../components/LogoHeader'
 import Promo from '../components/Promo'
 import  Slider  from '../components/Slider'
+import CategoryCards from '../components/CategoryCards'
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
     <LogoHeader />
     <Promo />
     <Slider />
+    <CategoryCards />
     </div>
     
   )
