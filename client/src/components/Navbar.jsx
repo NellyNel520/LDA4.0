@@ -110,10 +110,10 @@ const Navbar = ({user}) => {
 	        ))
 	      } */}
 
-					<Link className='md:ml-8 text-xl md:my-0 my-7' to={'/'}>
+					<Link className='md:ml-8 text-xl md:my-0 my-7' to={'/register'}>
 						<li className='text-blue-400 hover:text-white duration-500' >REGISTER</li>
 					</Link>
-	        <Link className='md:ml-8 text-xl md:my-0 my-7' to={'/'}>
+	        <Link className='md:ml-8 text-xl md:my-0 my-7' to={'/login'}>
 						<li className='text-blue-400 hover:text-white duration-500' >LOGIN</li>
 					</Link>
 	        <Link className='md:ml-8 text-xl md:my-0 my-7' to={'/'}>
