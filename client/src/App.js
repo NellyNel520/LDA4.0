@@ -16,6 +16,7 @@ import { logout } from './redux/userRedux'
 import Success from './pages/Success'
 import UserProfile from './pages/profilePages/UserProfile'
 import OrderHistory from './pages/profilePages/OrderHistory'
+import EditUser from './pages/profilePages/EditUser'
 
 function App() {
 	const user = useSelector((state) => state.user.currentUser)
@@ -50,6 +51,7 @@ function App() {
 						path="/profile/orderHistory"
 						element={<OrderHistory user={user} />}
 					/>
+					<Route path="/profile/edit" element={<EditUser user={user} />} />
 				</Routes>
 			</main>
 			<Footer />
