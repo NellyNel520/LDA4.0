@@ -81,7 +81,7 @@ const UserProfile = ({ user }) => {
 					</div>
 
 					<div className="ml-10 mt-10 text-2xl font-play">Recent Order</div>
-					<div className="border rounded mx-10 mt-6">
+					<div className=" rounded mx-10 mt-6">
 						<LatestOrder user={user} />
 					</div>
 

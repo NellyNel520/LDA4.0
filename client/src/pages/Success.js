@@ -49,6 +49,7 @@ const Success = () => {
 				img: item.img,
 				color: item.color,
 				size: item.size,
+				price: item.price,
 			})),
 			amount: cart.total,
 			address: data.billing_details.address,

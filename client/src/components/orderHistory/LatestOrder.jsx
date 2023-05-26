@@ -29,8 +29,8 @@ const LatestOrder = ({ user }) => {
 		<div className="text-white">
 			{orders.map((order) => (
 				<div>
-					<div className="order border ">
-						<div className="orderTop py-6 flex-wrap lg:flex border text-xl">
+					<div className="order rounded ">
+						<div className="orderTop rounded mb-5 py-6 flex-wrap lg:flex border text-xl">
 							<div className="px-4">
 								<span className="font-bold text-gray-400">Order Number </span>
 								<div>
