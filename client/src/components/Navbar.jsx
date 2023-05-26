@@ -76,7 +76,7 @@ const Navbar = ({ user, handleLogOut }) => {
 								PRODUCTS
 							</li>
 						</Link>
-						<Link className="md:ml-8 text-xl md:my-0 my-7" to={'/'}>
+						<Link className="md:ml-8 text-xl md:my-0 my-7" to={'/about'}>
 							<li className="text-blue-400 hover:text-white duration-500">
 								ABOUT
 							</li>
@@ -144,7 +144,7 @@ const Navbar = ({ user, handleLogOut }) => {
 							PRODUCTS
 						</li>
 					</Link>
-					<Link className="md:ml-8 text-xl md:my-0 my-7" to={'/'}>
+					<Link className="md:ml-8 text-xl md:my-0 my-7" to={'/about'}>
 						<li className="text-blue-400 hover:text-white duration-500">
 							ABOUT
 						</li>
