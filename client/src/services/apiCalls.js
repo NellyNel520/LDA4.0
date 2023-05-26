@@ -62,3 +62,17 @@ export const getProducts = async (dispatch) => {
   }
 };
 
+
+// ORDER
+
+export const createOrder = async (order, dispatch) => {
+	dispatch(addOrderStart())
+	try {
+		const res = await userRequest.post('/orders/new', order);
+		dispatch(addOrderSuccess(res.data));
+	} catch (err) {
+		dispatch(addOrderFailure());
+	}
+}
+
+

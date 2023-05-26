@@ -188,7 +188,7 @@ const Cart = () => {
 					}
 				)
 				console.log(response.data)
-				navigate('/success', {
+				navigate("/success", {
 					state: { stripeData: response.data, products: cart },
 				})
 				dispatch(clearCart())
