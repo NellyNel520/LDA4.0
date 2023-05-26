@@ -15,6 +15,7 @@ import { useNavigate } from 'react-router-dom'
 import { logout } from './redux/userRedux'
 import Success from './pages/Success'
 import UserProfile from './pages/profilePages/UserProfile'
+import OrderHistory from './pages/profilePages/OrderHistory'
 
 function App() {
 	const user = useSelector((state) => state.user.currentUser)
@@ -29,15 +30,14 @@ function App() {
 		navigate('/')
 	}
 
-
 	return (
 		<div className="App">
-			<Navbar user={user} handleLogOut={handleLogOut}/>
-			<Announcement user={user}/>
+			<Navbar user={user} handleLogOut={handleLogOut} />
+			<Announcement user={user} />
 			<main>
 				<Routes>
 					<Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
+					<Route path="/about" element={<About />} />
 					<Route path="/login" element={<Login />} />
 					<Route path="/register" element={<Register />} />
 					<Route path="/products" element={<Products />} />
@@ -46,6 +46,10 @@ function App() {
 					<Route path="/profile" element={<UserProfile user={user} />} />
 					<Route path="/products/:category" element={<Products />} />
 					<Route path="/product/:id" element={<ProductDetails />} />
+					<Route
+						path="/profile/orderHistory"
+						element={<OrderHistory user={user} />}
+					/>
 				</Routes>
 			</main>
 			<Footer />
