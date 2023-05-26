@@ -34,9 +34,9 @@ const EditUser = ({ user }) => {
 				<Sidebar />
 
 				<div className="ml-20 mt-10">
-					<div class="regWrapper w-[100%] md:w-[100%] rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0 ">
+					<div class="regWrapper w-full md:w-[100%] rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0 ">
 						<div class="p-10 space-y-4 md:space-y-6 sm:p-8">
-							<h1 class="text-2xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-3xl dark:text-white">
+							<h1 class="text-center font-bold  font-play text-white md:text-[3rem]">
 								Edit Account
 							</h1>
 							<form class="space-y-4 md:space-y-6" action="#">

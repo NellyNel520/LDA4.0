@@ -212,14 +212,14 @@ const Cart = () => {
 							Your Cart
 						</h1>
 						<Top className="mb-4">
-							<TopButton className="bg-white text-blue-400 hover:bg-blue-400 hover:text-white rounded">
+							<TopButton className="bg-white mx-4 text-blue-400 hover:bg-blue-400 hover:text-white rounded">
 								<Link to={'/products/'}>
 									<button>CONTINUE SHOPPING</button>
 								</Link>
 							</TopButton>
-							<TopTexts className="text-lg">
-								<TopText>Shopping Bag({cart.quantity})</TopText>
-								<TopText>Your Wishlist(12)</TopText>
+							<TopTexts className="text-lg hidden md:flex">
+								<TopText>Cart({cart.quantity})</TopText>
+								<TopText> Wishlist(12)</TopText>
 							</TopTexts>
 
 							<StripeCheckout

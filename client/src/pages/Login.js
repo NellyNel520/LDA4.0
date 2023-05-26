@@ -17,7 +17,7 @@ const Login = () => {
 		login(dispatch, { email, password })
 		navigate('/')
 	}
-
+ 
 	return (
 		<div className="regContainer font-play">
 			<div class="flex flex-col items-center justify-center px-[2rem] py-8 mx-auto md:h-screen lg:py-0">
