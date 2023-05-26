@@ -1,6 +1,69 @@
 import React from 'react'
+import { useEffect, useMemo, useState } from "react";
+import { userRequest } from '../services/requestMethods'
+
+
 
 export default function StatCards() {
+
+  const [userStats, setUserStats] = useState([]);
+  const [income, setIncome] = useState([]);
+  const [currentMonthIncome, setCurrentMonthIncome] = useState()
+  const [perc, setPerc] = useState(0); 
+
+  const MONTHS = useMemo(
+    () => [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Agu",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ],
+    []
+  );
+
+  useEffect(() => {
+    const getStats = async () => {
+      try {
+        const res = await userRequest.get("/users/stats");
+        res.data.map((item) =>
+          setUserStats((prev) => [
+            ...prev,
+            { name: MONTHS[item._id - 1], "Active User": item.total },
+          ])
+        );
+      } catch {}
+    };
+    getStats();
+		console.log(userStats)
+  }, [MONTHS]);
+
+
+
+  useEffect(() => {
+    const getIncome = async () => {
+      try {
+        const res = await userRequest.get("orders/income");
+        setIncome(res.data);
+        setPerc((res.data[0].total * 100) / res.data[1].total - 100);
+        setCurrentMonthIncome(res.data[0].total);
+      } catch {}
+    };
+    getIncome();
+  }, []);
+
+  console.log(income)
+  console.log(currentMonthIncome)
+
+
+
   return (
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 p-4 gap-4">
     <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
@@ -26,7 +89,8 @@ export default function StatCards() {
         <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="stroke-current text-blue-800 dark:text-gray-800 transform transition-transform duration-500 ease-in-out"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
       </div>
       <div class="text-right">
-        <p class="text-2xl">$11,257</p>
+        {/* <p class="text-2xl">${income[0]?.total.toLocaleString()}</p> */}
+        <p class="text-2xl">${currentMonthIncome}</p>
         <p>Sales</p>
       </div>
     </div>
