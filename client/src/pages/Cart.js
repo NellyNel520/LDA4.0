@@ -1,7 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useNavigate, Link } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { useState, useEffect } from 'react'
 import StripeCheckout from 'react-stripe-checkout'
+import axios from 'axios'
+import { calculateTotal, clearCart, removeItem } from '../redux/cartRedux'
+import DeleteIcon from '@mui/icons-material/Delete'
+
+const KEY =
+	'pk_test_51MsoK7ApFenuQy8MR8LgDNJu3AtBcuO8LjCDKeQn10hJ6EE8p0G29GkIdTYBYk8EOQsYFvMpOXvOHMFeDt4FN4kY00vus1QbyV'
 
 const Wrapper = styled.div`
 	padding: 1rem 1rem 4rem 1rem;
@@ -154,10 +162,53 @@ const Button = styled.button`
 `
 
 const Cart = () => {
+	const cart = useSelector((state) => state.cart)
+	// const [quantity, setQuantity] = useState(1)
+	const [stripeToken, setStripeToken] = useState(null)
+	let navigate = useNavigate()
+	const dispatch = useDispatch()
+
+	useEffect(() => {
+		dispatch(calculateTotal())
+	})
+
+	const onToken = (token) => {
+		setStripeToken(token)
+	}
+	console.log(stripeToken)
+
+	useEffect(() => {
+		const makeRequest = async () => {
+			try {
+				const response = await axios.post(
+					'http://localhost:3001/api/checkout/payment',
+					{
+						tokenId: stripeToken.id,
+						amount: cart.total * 100,
+					}
+				)
+				console.log(response.data)
+				navigate('/success', {
+					state: { stripeData: response.data, products: cart },
+				})
+				dispatch(clearCart())
+			} catch (err) {
+				console.log(err)
+			}
+		}
+		stripeToken && makeRequest()
+	}, [stripeToken, cart.total, navigate])
+
+	const handleClearCart = () => {
+		dispatch(clearCart())
+	}
+
+
 	return (
+		<div className='h-auto font-play'>
 		<div>
 			<Wrapper className="text-white">
-				<div class="h-screen  pt-10">
+				<div class="h-auto  pt-10">
 					<h1 class="mb-10 text-center text-2xl font-bold text-blue-500">
 						Your Cart
 					</h1>
@@ -192,108 +243,72 @@ const Cart = () => {
 					</Top>
 
 					<div class="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
+						<Hr />
 						<div class="rounded-lg md:w-2/3">
-							<div class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
-								<img
-									src="https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-									alt="product-image"
-									class="w-full rounded-lg sm:w-40"
-								/>
-								<div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
-									<div class="mt-5 sm:mt-0">
-										<h2 class="text-lg font-bold text-gray-900">
-											Nike Air Max 2019
-										</h2>
-										<p class="mt-1 text-xs text-gray-700">36EU - 4US</p>
-									</div>
-									<div class="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
-										<div class="flex items-center border-gray-100">
-											<span class="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50">
-												{' '}
-												-{' '}
-											</span>
-											<input
-												class="h-8 w-8 border bg-white text-center text-xs outline-none"
-												type="number"
-												value="2"
-												min="1"
-											/>
-											<span class="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50">
-												{' '}
-												+{' '}
-											</span>
+							{cart.products.map((product) => (
+								<div
+									class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start"
+									key={product._id}
+								>
+									<img
+										src={product.img}
+										alt="productImage"
+										class="w-full rounded-lg sm:w-40"
+									/>
+									<div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
+										<div class="mt-5 sm:mt-0">
+											<h2 class="text-lg font-bold text-gray-900">
+												{product.title}
+											</h2>
+											<p className="text-blue-400 mb-4">{product._id}</p>
+											<ProductSize className="text-black text-lg">
+												<b className=" pr-3">Size:</b> {product.size}
+											</ProductSize>
+											<div className="flex">
+												<b className="text-black pr-3">Color:</b>
+												<ProductColor className="mt-2" color={product.color} />
+											</div>
 										</div>
-										<div class="flex items-center space-x-4">
-											<p class="text-sm">259.000 ₭</p>
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												fill="none"
-												viewBox="0 0 24 24"
-												stroke-width="1.5"
-												stroke="currentColor"
-												class="h-5 w-5 cursor-pointer duration-150 hover:text-red-500"
-											>
-												<path
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													d="M6 18L18 6M6 6l12 12"
-												/>
-											</svg>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
-								<img
-									src="https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1131&q=80"
-									alt="product-image"
-									class="w-full rounded-lg sm:w-40"
-								/>
-								<div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
-									<div class="mt-5 sm:mt-0">
-										<h2 class="text-lg font-bold text-gray-900">
-											Nike Air Max 2019
-										</h2>
-										<p class="mt-1 text-xs text-gray-700">36EU - 4US</p>
-									</div>
-									<div class="mt-4 flex justify-between im sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
-										<div class="flex items-center border-gray-100">
-											<span class="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50">
-												{' '}
-												-{' '}
-											</span>
-											<input
-												class="h-8 w-8 border bg-white text-center text-xs outline-none"
-												type="number"
-												value="2"
-												min="1"
-											/>
-											<span class="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50">
-												{' '}
-												+{' '}
-											</span>
-										</div>
-										<div class="flex items-center space-x-4">
-											<p class="text-sm">259.000 ₭</p>
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												fill="none"
-												viewBox="0 0 24 24"
-												stroke-width="1.5"
-												stroke="currentColor"
-												class="h-5 w-5 cursor-pointer duration-150 hover:text-red-500"
-											>
-												<path
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													d="M6 18L18 6M6 6l12 12"
-												/>
-											</svg>
+										<div class="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
+											<div class="flex items-center border-gray-100">
+												<span class="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50">
+													{' '}
+													-{' '}
+												</span>
+												{/* <input
+													class="h-8 w-8 border bg-white text-center text-xs outline-none"
+													type="number"
+													value="2"
+													min="1"
+												/> */}
+												<ProductAmount className="text-black">
+													{product.quantity}
+												</ProductAmount>
+												<span class="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50">
+													{' '}
+													+{' '}
+												</span>
+											</div>
+											<div class="flex items-center space-x-4 text-black">
+												<p class="text-sm">
+													${product.price * product.quantity}
+												</p>
+												<DeleteIcon className='hover:fill-red-400' 	onClick={() => {
+														dispatch(removeItem(product._id))
+													}}/>
+												
+													
+												
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
+							))}
+							<Hr />
+							<button onClick={handleClearCart}
+							className="border rounded p-2 mt-6 ml-[40%] hover:bg-blue-500 hover:text-black text-xl">Clear Cart</button>
 						</div>
+
 						{/* <!-- Sub total --> */}
 						<div class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
 							<SummaryTitle className="text-2xl text-blue-400">
@@ -307,7 +322,7 @@ const Cart = () => {
 								<p class="text-gray-700">Estimated Shipping:</p>
 								<p class="text-gray-700">$4.99</p>
 							</div>
-              <div class="flex justify-between">
+							<div class="flex justify-between">
 								<p class="text-gray-700">Shipping Discount:</p>
 								<p class="text-gray-700">-$4.99</p>
 							</div>
@@ -315,7 +330,9 @@ const Cart = () => {
 							<div class="flex justify-between">
 								<p class="text-lg font-bold text-blue-500">Total:</p>
 								<div class="">
-									<p class="mb-1 text-lg font-bold text-blue-500">$134.98 USD</p>
+									<p class="mb-1 text-lg font-bold text-blue-500">
+										$134.98 USD
+									</p>
 									<p class="text-sm text-gray-700">+ including tax</p>
 								</div>
 							</div>
@@ -326,6 +343,7 @@ const Cart = () => {
 					</div>
 				</div>
 			</Wrapper>
+			</div>
 		</div>
 	)
 }
