@@ -61,7 +61,7 @@ const Navbar = ({ user, handleLogOut }) => {
 								<ExitToAppOutlinedIcon />
 							</li>
 						</Link>
-						<Link className="md:ml-8 text-xl md:my-0 my-7" to={'/'}>
+						<Link className="md:ml-8 text-xl md:my-0 my-7" to={'/profile'}>
 							<li className="text-blue-400 hover:text-white duration-500">
 								<PersonIcon />
 							</li>

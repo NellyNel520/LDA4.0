@@ -14,6 +14,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { logout } from './redux/userRedux'
 import Success from './pages/Success'
+import UserProfile from './pages/profilePages/UserProfile'
 
 function App() {
 	const user = useSelector((state) => state.user.currentUser)
@@ -42,6 +43,7 @@ function App() {
 					<Route path="/products" element={<Products />} />
 					<Route path="/cart" element={<Cart />} />
 					<Route path="/success" element={<Success />} />
+					<Route path="/profile" element={<UserProfile user={user} />} />
 					<Route path="/products/:category" element={<Products />} />
 					<Route path="/product/:id" element={<ProductDetails />} />
 				</Routes>
