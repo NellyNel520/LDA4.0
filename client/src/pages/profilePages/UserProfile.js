@@ -7,14 +7,14 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline'
 import PermIdentityIcon from '@mui/icons-material/PermIdentity'
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid'
 // import OrderHistory from '../../components/orderHistory/FullOrderHistory'
-// import LatestOrder from '../../components/orderHistory/LatestOrder'
+import LatestOrder from '../../components/orderHistory/LatestOrder'
 // import { useSelector } from "react-redux";
 import moment from 'moment'
 
 const UserProfile = ({ user }) => {
 	let dateJoined = moment(user.createdAt).format('MMM DD, YYYY')
 	return (
-		<div className="text-white  h-auto w-[100vw]">
+		<div className="text-white  h-auto ">
 			{/* UserProfile */}
 			<div className="flex">
 				<Sidebar className="rounded" />
@@ -82,7 +82,7 @@ const UserProfile = ({ user }) => {
 
 					<div className="ml-10 mt-10 text-2xl font-play">Recent Order</div>
 					<div className="border rounded mx-10 mt-6">
-						{/* <LatestOrder user={user} /> */}
+						<LatestOrder user={user} />
 					</div>
 
 					{/* end of main */}
