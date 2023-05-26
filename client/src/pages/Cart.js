@@ -203,146 +203,164 @@ const Cart = () => {
 		dispatch(clearCart())
 	}
 
-
 	return (
-		<div className='h-auto font-play'>
-		<div>
-			<Wrapper className="text-white">
-				<div class="h-auto  pt-10">
-					<h1 class="mb-10 text-center text-2xl font-bold text-blue-500">
-						Your Cart
-					</h1>
-					<Top className="mb-4">
-						<TopButton className="bg-white text-blue-400 hover:bg-blue-400 hover:text-white rounded">
-							<Link to={'/products/'}>
-								<button>CONTINUE SHOPPING</button>
-							</Link>
-						</TopButton>
-						<TopTexts>
-							<TopText>Shopping Bag(0)</TopText>
-							<TopText>Your Wishlist(12)</TopText>
-						</TopTexts>
-
-						<StripeCheckout
-							name="London Dior Apparel"
-							image="https://i.ibb.co/JxgT8GP/LDA-Logo-Blue2.png"
-							billingAddress
-							shippingAddress
-							// description={`Your total is $${cart.total}`}
-							// amount={cart.total * 100}
-							// token={onToken}
-							// stripeKey={KEY}
-						>
-							<TopButton
-								type="field"
-								className="bg-blue-400 rounded text-black hover:text-white"
-							>
-								CHECKOUT NOW
+		<div className="h-auto font-play">
+			<div>
+				<Wrapper className="text-white">
+					<div class="h-auto  pt-10">
+						<h1 class="mb-10 text-center text-2xl font-bold text-blue-500">
+							Your Cart
+						</h1>
+						<Top className="mb-4">
+							<TopButton className="bg-white text-blue-400 hover:bg-blue-400 hover:text-white rounded">
+								<Link to={'/products/'}>
+									<button>CONTINUE SHOPPING</button>
+								</Link>
 							</TopButton>
-						</StripeCheckout>
-					</Top>
+							<TopTexts className="text-lg">
+								<TopText>Shopping Bag({cart.quantity})</TopText>
+								<TopText>Your Wishlist(12)</TopText>
+							</TopTexts>
 
-					<div class="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
-						<Hr />
-						<div class="rounded-lg md:w-2/3">
-							{cart.products.map((product) => (
-								<div
-									class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start"
-									key={product._id}
+							<StripeCheckout
+								name="London Dior Apparel"
+								image="https://i.ibb.co/JxgT8GP/LDA-Logo-Blue2.png"
+								billingAddress
+								shippingAddress
+								description={`Your total is $${cart.total}`}
+								amount={cart.total * 100}
+								token={onToken}
+								stripeKey={KEY}
+							>
+								<TopButton
+									type="field"
+									className="bg-blue-400 rounded text-black hover:text-white"
 								>
-									<img
-										src={product.img}
-										alt="productImage"
-										class="w-full rounded-lg sm:w-40"
-									/>
-									<div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
-										<div class="mt-5 sm:mt-0">
-											<h2 class="text-lg font-bold text-gray-900">
-												{product.title}
-											</h2>
-											<p className="text-blue-400 mb-4">{product._id}</p>
-											<ProductSize className="text-black text-lg">
-												<b className=" pr-3">Size:</b> {product.size}
-											</ProductSize>
-											<div className="flex">
-												<b className="text-black pr-3">Color:</b>
-												<ProductColor className="mt-2" color={product.color} />
+									CHECKOUT NOW
+								</TopButton>
+							</StripeCheckout>
+						</Top>
+
+						<div class="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
+							<Hr />
+							<div class="rounded-lg md:w-2/3">
+								{cart.products.map((product) => (
+									<div
+										class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start"
+										key={product._id}
+									>
+										<img
+											src={product.img}
+											alt="productImage"
+											class="w-full rounded-lg sm:w-40"
+										/>
+										<div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
+											<div class="mt-5 sm:mt-0">
+												<h2 class="text-lg font-bold text-gray-900">
+													{product.title}
+												</h2>
+												<p className="text-blue-400 mb-4">{product._id}</p>
+												<ProductSize className="text-black text-lg">
+													<b className=" pr-3">Size:</b> {product.size}
+												</ProductSize>
+												<div className="flex">
+													<b className="text-black pr-3">Color:</b>
+													<ProductColor
+														className="mt-2"
+														color={product.color}
+													/>
+												</div>
 											</div>
-										</div>
-										<div class="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
-											<div class="flex items-center border-gray-100">
-												<span class="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50">
-													{' '}
-													-{' '}
-												</span>
-												{/* <input
+											<div class="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
+												<div class="flex items-center border-gray-100">
+													<span class="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50">
+														{' '}
+														-{' '}
+													</span>
+													{/* <input
 													class="h-8 w-8 border bg-white text-center text-xs outline-none"
 													type="number"
 													value="2"
 													min="1"
 												/> */}
-												<ProductAmount className="text-black">
-													{product.quantity}
-												</ProductAmount>
-												<span class="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50">
-													{' '}
-													+{' '}
-												</span>
-											</div>
-											<div class="flex items-center space-x-4 text-black">
-												<p class="text-sm">
-													${product.price * product.quantity}
-												</p>
-												<DeleteIcon className='hover:fill-red-400' 	onClick={() => {
-														dispatch(removeItem(product._id))
-													}}/>
-												
-													
-												
+													<ProductAmount className="text-black">
+														{product.quantity}
+													</ProductAmount>
+													<span class="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50">
+														{' '}
+														+{' '}
+													</span>
+												</div>
+												<div class="flex items-center space-x-4  text-black">
+													<p class="text-xl">
+														${(product.price * product.quantity).toFixed(2)}
+													</p>
+													<DeleteIcon
+														className="hover:fill-red-400"
+														onClick={() => {
+															dispatch(removeItem(product._id))
+														}}
+													/>
+												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-							))}
-							<Hr />
-							<button onClick={handleClearCart}
-							className="border rounded p-2 mt-6 ml-[40%] hover:bg-blue-500 hover:text-black text-xl">Clear Cart</button>
-						</div>
+								))}
+								<Hr />
+								<button
+									onClick={handleClearCart}
+									className="border rounded p-2 mt-6 ml-[40%] hover:bg-blue-500 hover:text-black text-xl"
+								>
+									Clear Cart
+								</button>
+							</div>
 
-						{/* <!-- Sub total --> */}
-						<div class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
-							<SummaryTitle className="text-2xl text-blue-400">
-								ORDER SUMMARY
-							</SummaryTitle>
-							<div class="mb-2 flex justify-between">
-								<p class="text-gray-700">Subtotal:</p>
-								<p class="text-gray-700">$129.99</p>
-							</div>
-							<div class="flex justify-between">
-								<p class="text-gray-700">Estimated Shipping:</p>
-								<p class="text-gray-700">$4.99</p>
-							</div>
-							<div class="flex justify-between">
-								<p class="text-gray-700">Shipping Discount:</p>
-								<p class="text-gray-700">-$4.99</p>
-							</div>
-							<hr class="my-4" />
-							<div class="flex justify-between">
-								<p class="text-lg font-bold text-blue-500">Total:</p>
-								<div class="">
-									<p class="mb-1 text-lg font-bold text-blue-500">
-										$134.98 USD
-									</p>
-									<p class="text-sm text-gray-700">+ including tax</p>
+							{/* <!-- Sub total --> */}
+							<div class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
+								<SummaryTitle className="text-2xl text-blue-400">
+									ORDER SUMMARY
+								</SummaryTitle>
+								<div class="mb-2 flex justify-between">
+									<p class="text-gray-700">Subtotal:</p>
+									<p class="text-gray-700">${cart.total.toFixed(2)}</p>
 								</div>
+								<div class="flex justify-between">
+									<p class="text-gray-700">Estimated Shipping:</p>
+									<p class="text-gray-700">$4.99</p>
+								</div>
+								<div class="flex justify-between">
+									<p class="text-gray-700">Shipping Discount:</p>
+									<p class="text-gray-700">-$4.99</p>
+								</div>
+								<hr class="my-4" />
+								<div class="flex justify-between">
+									<p class="text-lg font-bold text-blue-500">Total:</p>
+									<div class="">
+										<p class="mb-1 text-lg font-bold text-blue-500">
+											${cart.total.toFixed(2)} USD
+										</p>
+										<p class="text-sm text-gray-700">+ including tax</p>
+									</div>
+								</div>
+
+								<StripeCheckout
+									name="London Dior Apparel"
+									image="https://i.ibb.co/JxgT8GP/LDA-Logo-Blue2.png"
+									billingAddress
+									shippingAddress
+									description={`Your total is $${cart.total}`}
+									amount={cart.total * 100}
+									token={onToken}
+									stripeKey={KEY}
+								>
+									<button class="mt-6 w-full rounded-md bg-blue-500 py-2.5 font-medium text-blue-50 hover:bg-green-500 hover:text-black">
+										CHECKOUT
+									</button>
+								</StripeCheckout>
 							</div>
-							{/* <button class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">
-								Check out
-							</button> */}
 						</div>
 					</div>
-				</div>
-			</Wrapper>
+				</Wrapper>
 			</div>
 		</div>
 	)
