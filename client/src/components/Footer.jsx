@@ -7,16 +7,20 @@ const Footer = () => {
 				<div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
 					<div class="md:flex md:justify-between">
 						<div class="mb-6 md:mb-0">
-							<a href="https://flowbite.com/" class="flex items-center">
+							<div class="flex items-center">
+							<div>
 								<img
 									src="https://i.postimg.cc/5tQscMm2/LDA-Logo-Blue1.png"
 									alt="logo"
 									className="h-[10rem] mr-2 "
 								/>
-								<span class="self-center text-2xl font-semibold whitespace-nowrap font-play text-4xl">
+								<span class="self-center text-2xl font-semibold whitespace-nowrap font-play ">
 									London Dior Apparel
 								</span>
-							</a>
+								</div>
+
+
+							</div>
 
 							<div>
 								Your one-stop-shop for all things fashion! Shop now and get up
