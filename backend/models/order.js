@@ -16,6 +16,10 @@ const Order = new Schema(
 					type: Number,
 					default: 1,
 				},
+				price: {
+					type: Number,
+					
+				},
 				title: { type: String },
 				img: { type: String },
 				desc: { type: String },
