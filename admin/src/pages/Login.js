@@ -16,7 +16,7 @@ const Login = () => {
 	const handleClick = (e) => {
 		e.preventDefault()
 		login(dispatch, { email, password })
-		navigate('/')
+		navigate('/home')
 	}
  
 	return (
