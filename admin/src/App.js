@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { logout } from './redux/userRedux';
 import Login from './pages/Login';
 import Home from './pages/Home';
+import ProductList from './pages/ProductList';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
       <Routes>
       <Route path="/" element={<Login />} />
       <Route path="/home" element={<Home user={user}/>} />
+      <Route path="/products" element={<ProductList user={user}/>} />
       </Routes>
     </div>
   );

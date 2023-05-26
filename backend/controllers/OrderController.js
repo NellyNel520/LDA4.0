@@ -58,11 +58,13 @@ const deleteOrder = async (req, res) => {
 
 // Get user orders
 const getUserOrders = async (req, res) => {
-	const query = req.query.new;
+	const query = req.query.new
 	try {
-		const orders = query 
-		? await Order.find({ userId: req.params.userId }).sort({ _id: -1 }).limit(1)
-		: await Order.find({ userId: req.params.userId }).sort({ _id: -1 })
+		const orders = query
+			? await Order.find({ userId: req.params.userId })
+					.sort({ _id: -1 })
+					.limit(1)
+			: await Order.find({ userId: req.params.userId }).sort({ _id: -1 })
 		res.status(200).json(orders)
 	} catch (err) {
 		res.status(500).json(err)
@@ -82,6 +84,7 @@ const getAllOrders = async (req, res) => {
 		res.status(500).json(err)
 	}
 }
+
 
 // get monthly income (admin only)
 
@@ -120,12 +123,13 @@ const getMonthlyIncome = async (req, res) => {
 	}
 }
 
-
 const getCurrentMonthIncome = async (req, res) => {
 	const productId = req.query.pid
 	const date = new Date()
 	const currentMonth = new Date(date.setMonth(date.getMonth()))
-	const previousMonth = new Date(new Date().setMonth(currentMonth.getMonth() - 1))
+	const previousMonth = new Date(
+		new Date().setMonth(currentMonth.getMonth() - 1)
+	)
 
 	try {
 		const income = await Order.aggregate([
@@ -163,5 +167,6 @@ module.exports = {
 	getUserOrders,
 	getAllOrders,
 	getMonthlyIncome,
-	getCurrentMonthIncome
+	getCurrentMonthIncome,
+	
 }

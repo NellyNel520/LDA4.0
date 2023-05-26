@@ -1,7 +1,8 @@
 import React from 'react'
 import { useEffect, useMemo, useState } from "react";
 import { userRequest } from '../services/requestMethods'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { getOrders, getUsers } from '../services/apiCalls'
 
 
 export default function StatCards() {
@@ -10,6 +11,9 @@ export default function StatCards() {
   const [income, setIncome] = useState([]);
   const [currentMonthIncome, setCurrentMonthIncome] = useState()
   const [perc, setPerc] = useState(0); 
+  const dispatch = useDispatch()
+	const orders = useSelector((state) => state.order.orders)
+  const users = useSelector((state) => state.customer.users)
 
   const MONTHS = useMemo(
     () => [
@@ -45,12 +49,20 @@ export default function StatCards() {
 		console.log(userStats)
   }, [MONTHS]);
 
+  useEffect(() => {
+		getOrders(dispatch)
+	}, [dispatch])
+
+  useEffect(() => {
+		getUsers(dispatch)
+	}, [dispatch])
+
 
 
   useEffect(() => {
     const getIncome = async () => {
       try {
-        const res = await userRequest.get("orders/income");
+        const res = await userRequest.get("orders/currentMonth-income");
         setIncome(res.data);
         setPerc((res.data[0].total * 100) / res.data[1].total - 100);
         setCurrentMonthIncome(res.data[0].total);
@@ -71,8 +83,8 @@ export default function StatCards() {
         <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="stroke-current text-blue-800 dark:text-gray-800 transform transition-transform duration-500 ease-in-out"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
       </div>
       <div class="text-right">
-        <p class="text-2xl">1,257</p>
-        <p>Visitors</p>
+        <p class="text-2xl">{users.length}</p>
+        <p>Users</p>
       </div>
     </div>
     <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
@@ -80,7 +92,7 @@ export default function StatCards() {
         <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="stroke-current text-blue-800 dark:text-gray-800 transform transition-transform duration-500 ease-in-out"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
       </div>
       <div class="text-right">
-        <p class="text-2xl">557</p>
+        <p class="text-2xl">{orders.length}</p>
         <p>Orders</p>
       </div>
     </div>
@@ -89,9 +101,9 @@ export default function StatCards() {
         <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="stroke-current text-blue-800 dark:text-gray-800 transform transition-transform duration-500 ease-in-out"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
       </div>
       <div class="text-right">
-        {/* <p class="text-2xl">${income[0]?.total.toLocaleString()}</p> */}
+        {/* <p class="text-2xl">${income[0]?.total.toFixed(2)}</p> */}
         <p class="text-2xl">${currentMonthIncome}</p>
-        <p>Sales</p>
+        <p>Monthly Sales</p>
       </div>
     </div>
     <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
@@ -100,7 +112,7 @@ export default function StatCards() {
       </div>
       <div class="text-right">
         <p class="text-2xl">$75,257</p>
-        <p>Balances</p>
+        <p>Annual Sales</p>
       </div>
     </div>
   </div>
