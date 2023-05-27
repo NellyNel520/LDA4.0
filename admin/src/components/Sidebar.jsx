@@ -17,7 +17,7 @@ import { Link } from 'react-router-dom'
 export default function Sidebar() {
 	return (
 		<div>
-			<div class="fixed flex flex-col top-14 left-0 w-14 hover:w-64 md:w-64 bg-gray-800  h-full text-white transition-all duration-300 border-none z-10 sidebar">
+			<div class="rounded sticky flex flex-col top-14 left-0 w-14 hover:w-64 lg:w-40 bg-gray-800  h-[120vh] text-white transition-all duration-300 border-none z-10 sidebar">
 				<div class="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
 					<ul class="flex flex-col py-4 space-y-1">
 						<li class="px-5 hidden md:block">

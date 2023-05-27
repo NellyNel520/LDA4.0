@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 const Navbar = ({ user, handleLogout }) => {
 	return (
-		<div className="">
+		// <div className="">
 			<div class=" w-full flex items-center justify-between h-14 text-blue-500 z-10 bg-gray-800">
 				<div className="font-bold text-3xl cursor-pointer flex items-center font-ari text-blue-500">
 					<span className="w-[3rem]  ">
@@ -60,7 +60,7 @@ const Navbar = ({ user, handleLogout }) => {
 					</ul>
 				</div>
 			</div>
-		</div>
+		// </div>
 	)
 }
 
