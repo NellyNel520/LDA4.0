@@ -11,7 +11,7 @@ import UserList from './pages/UserList';
 import OrderList from './pages/OrderList';
 import Product from './pages/Product';
 import User from './pages/User';
-import OrderDetails from './pages/OrderDetails';
+import OrderDetails from './pages/Order';
 
 
 function App() {

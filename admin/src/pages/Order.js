@@ -8,10 +8,12 @@ import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 import OrderInfo from '../components/OrderInfo';
+import OrderDetails from '../components/OrderDetails';
 
 
 
-const OrderDetails = ({user}) => {
+
+const Order = ({user}) => {
   return (
     <div>
     <Navbar user={user} />
@@ -24,6 +26,7 @@ const OrderDetails = ({user}) => {
 
       <div class="h-full w-full  mt-8 mb-10">
        <OrderInfo />
+       <OrderDetails />
 
        
       </div>
@@ -33,4 +36,4 @@ const OrderDetails = ({user}) => {
   )
 }
 
-export default OrderDetails
+export default Order
