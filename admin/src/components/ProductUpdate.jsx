@@ -14,11 +14,9 @@ import { Link, useLocation } from 'react-router-dom'
 import { useNavigate } from 'react-router'
 
 const ProductUpdate = ({ product }) => {
-	const location = useLocation()
 	let navigate = useNavigate()
 	const [inputs, setInputs] = useState({})
 	const [file, setFile] = useState(null)
-	const [cat, setCat] = useState([])
 	const [color, setColor] = useState([])
 	const [size, setSize] = useState([])
 	const dispatch = useDispatch()
@@ -32,6 +30,9 @@ const ProductUpdate = ({ product }) => {
 	}
 
 	const handleColor = (e) => {
+		// setColor((prev) => {
+		//   return {...prev,  e.target.value.split(',') }
+		// })
 		setColor(e.target.value.split(','))
 	}
 	const handleSize = (e) => {
@@ -102,8 +103,11 @@ const ProductUpdate = ({ product }) => {
 	return (
 		<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 p-4 gap-4 text-black dark:text-white">
 			<div class="md:col-span-2 xl:col-span-3">
-				<h3 class="text-2xl text-blue-400 font-semibold font-abril">Product Update</h3>
+				<h3 class="text-2xl text-center text-blue-400 font-semibold font-abril">
+					Update Product
+				</h3>
 			</div>
+      
 
 			{/* 1st card */}
 			<div class="md:col-span-2 xl:col-span-1">
@@ -119,7 +123,7 @@ const ProductUpdate = ({ product }) => {
 							</label>
 							<input
 								name="title"
-								// onChange={handleChange}
+								onChange={handleChange}
 								type="text"
 								placeholder={product.title}
 								id="email"
@@ -136,7 +140,7 @@ const ProductUpdate = ({ product }) => {
 							</label>
 							<textarea
 								name="desc"
-								// onChange={handleChange}
+								onChange={handleChange}
 								rows="5"
 								cols="50"
 								placeholder={product.desc}
@@ -154,7 +158,7 @@ const ProductUpdate = ({ product }) => {
 							</label>
 							<input
 								placeholder={product.categories}
-								// onChange={handleChange}
+								onChange={handleChange}
 								type="text"
 								name="categories"
 								class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -171,7 +175,7 @@ const ProductUpdate = ({ product }) => {
 							<input
 								name="price"
 								placeholder={product.price.toFixed(2)}
-								// onChange={handleChange}
+								onChange={handleChange}
 								type="number"
 								class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 								required="true"
@@ -182,12 +186,12 @@ const ProductUpdate = ({ product }) => {
 								for="password"
 								class="block mb-2 text-md font-medium text-gray-900 dark:text-white"
 							>
-								Sizes(s)
+								Sizes(s) <span className='text-gray-600'>*required</span>
 							</label>
 							<input
 								name="size"
 								placeholder={product.size}
-								// onChange={handleSize}
+								onChange={handleSize}
 								type="text"
 								class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 								required="true"
@@ -198,12 +202,12 @@ const ProductUpdate = ({ product }) => {
 								for="password"
 								class="block mb-2 text-md font-medium text-gray-900 dark:text-white"
 							>
-								Available Color(s)
+								Available Color(s) <span className='text-gray-600'>*required</span>
 							</label>
 							<input
 								name="color"
 								placeholder={product.color}
-								// onChange={handleColor}
+								onChange={handleColor}
 								type="text"
 								class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 								required="true"
@@ -219,7 +223,7 @@ const ProductUpdate = ({ product }) => {
 							<input
 								name="inStock"
 								placeholder={product.inStock}
-								// onChange={handleChange}
+								onChange={handleChange}
 								type="number"
 								class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 								required="true"
@@ -235,7 +239,7 @@ const ProductUpdate = ({ product }) => {
 							<input
 								name="rating"
 								placeholder={product.rating}
-								// onChange={handleChange}
+								onChange={handleChange}
 								type="number"
 								class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 								required="true"
@@ -245,7 +249,7 @@ const ProductUpdate = ({ product }) => {
 						<button
 							// onClick={handleClick}
 							// disabled={isFetching}
-              onClick={handleUpdate}
+							onClick={handleUpdate}
 							class="w-full text-white bg-blue-500 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
 						>
 							UPDATE
@@ -262,28 +266,30 @@ const ProductUpdate = ({ product }) => {
 					</div> */}
 
 					<div className="flex">
-						<form className='m'>
-            <label className=" text-xl font-play" for="file">New Image</label>
-					<input
-						type="file"
-						id="file"
-						onChange={(e) => setFile(e.target.files[0])}
-            className='py-3.5 '
-					/>
-            </form>
+						<form className="m">
+							<label className=" text-xl font-play" for="file">
+								New Image
+							</label>
+							<input
+								type="file"
+								id="file"
+								onChange={(e) => setFile(e.target.files[0])}
+								className="py-3.5 "
+							/>
+						</form>
 
 						<div>
 							<img src={product.img} alt="" className="rounded " />
 						</div>
 					</div>
-          <button
-							// onClick={handleClick}
-							// disabled={isFetching}
-              onClick={updateImg}
-							class="w-full text-white bg-blue-500 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-6 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-						>
-							UPDATE
-						</button>
+					<button
+						// onClick={handleClick}
+						// disabled={isFetching}
+						onClick={updateImg}
+						class="w-full text-white bg-blue-500 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-6 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+					>
+						UPDATE
+					</button>
 				</div>
 			</div>
 		</div>
