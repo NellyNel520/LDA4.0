@@ -17,12 +17,12 @@ import { Link } from 'react-router-dom'
 export default function Sidebar() {
 	return (
 		<div>
-			<div class="rounded sticky flex flex-col top-14 left-0 w-14 hover:w-64 lg:w-40 bg-gray-800  h-[120vh] text-white transition-all duration-300 border-none z-10 sidebar">
+			<div class="rounded sticky flex flex-col top-14 left-0 w-14 hover:w-60  bg-[#3167b2]  h-[120vh] text-white transition-all duration-300 border-none z-10 sidebar">
 				<div class="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
 					<ul class="flex flex-col py-4 space-y-1">
 						<li class="px-5 hidden md:block">
 							<div class="flex flex-row items-center h-8">
-								<div class="text-sm font-light tracking-wide text-blue-400 uppercase">
+								<div class=" text-sm font-light tracking-wide truncate text-blue-400 uppercase">
 									Main
 								</div>
 							</div>
@@ -55,6 +55,19 @@ export default function Sidebar() {
 						</li>
 						<li>
 							<Link
+								to={'/products'}
+								class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
+							>
+								<span className="inline-flex justify-center items-center ml-4">
+									<StorefrontIcon />
+								</span>
+                <span className='ml-2 text-sm tracking-wide truncate'>
+                Products
+                </span>
+							</Link>
+						</li>
+						<li>
+							<Link
 								to={'/'}
 								class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
 							>
@@ -67,19 +80,7 @@ export default function Sidebar() {
 							</Link>
 						</li>
 
-            <li>
-							<Link
-								to={'/products'}
-								class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
-							>
-								<span className="inline-flex justify-center items-center ml-4">
-									<StorefrontIcon />
-								</span>
-                <span className='ml-2 text-sm tracking-wide truncate'>
-                Products
-                </span>
-							</Link>
-						</li>
+            
             <li>
 							<Link
 								to={'/'}
@@ -197,14 +198,14 @@ export default function Sidebar() {
 								<span class="ml-2 text-sm tracking-wide truncate">
 									Notifications
 								</span>
-								<span class="hidden md:block px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-red-500 bg-red-50 rounded-full">
+								{/* <span class="hidden md:block px-2 py-0.5 ml-auto text-xs font-medium tracking-wide truncate text-red-500 bg-red-50 rounded-full">
 									1.2k
-								</span>
+								</span> */}
 							</a>
 						</li>
 						<li class="px-5 hidden md:block">
 							<div class="flex flex-row items-center mt-5 h-8">
-								<div class="text-sm font-light tracking-wide text-gray-400 uppercase">
+								<div class="text-sm font-light tracking-wide truncate  text-gray-400 uppercase">
 									Settings
 								</div>
 							</div>
@@ -266,9 +267,9 @@ export default function Sidebar() {
 							</a>
 						</li>
 					</ul>
-					<p class="mb-14 px-5 py-3 hidden md:block text-center text-xs">
+					{/* <p class="mb-14 px-5 py-3 hidden md:block text-center text-xs">
 						Copyright @2021
-					</p>
+					</p> */}
 				</div>
 			</div>
 		</div>

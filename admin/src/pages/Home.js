@@ -54,7 +54,7 @@ const Home = ({user}) => {
      
       </div>
 
-      <div class="h-full w-full ml-14 mt-8 mb-10 md:ml-64">
+      <div class="h-full w-full  mt-8 mb-10">
         <StatCards />
       </div>
 

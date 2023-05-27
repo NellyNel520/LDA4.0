@@ -8,15 +8,15 @@ import { Link } from 'react-router-dom'
 const Navbar = ({ user, handleLogout }) => {
 	return (
 		// <div className="">
-			<div class=" w-full flex items-center justify-between h-14 text-blue-500 z-10 bg-gray-800">
-				<div className="font-bold text-3xl cursor-pointer flex items-center font-ari text-blue-500">
-					<span className="w-[3rem]  ">
+			<div class=" w-full flex items-center justify-between h-14 text-white z-10 bg-[#3167b2]">
+				<div className="font-bold text-2xl cursor-pointer flex items-center font-ari text-white">
+					<span className="w-[5rem]  ">
 						<img
 							src="https://i.postimg.cc/5tQscMm2/LDA-Logo-Blue1.png"
 							alt="logo"
 						/>
 					</span>
-					<span className='hidden md:flex'>London Dior Apparel</span>
+					<span className=' hidden md:flex'>London Dior Apparel</span>
 				</div>
 
 				<div class="flex justify-between items-center h-14 b header-right">

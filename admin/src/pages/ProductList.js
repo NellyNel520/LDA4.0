@@ -24,7 +24,14 @@ const ProductList = ({ user }) => {
 	}
 
 	const columns = [
-		{ field: '_id', headerName: 'ID', width: 80 },
+		{ field: '_id', headerName: 'ID', width: 80,
+    renderCell: (params) => {
+      return (
+        <div className='text-white'>
+        {params.row._id}
+        </div>
+      )
+    }, },
 		{
 			field: 'product',
 			headerName: 'Product',
@@ -54,18 +61,32 @@ const ProductList = ({ user }) => {
 			field: 'categories',
 			headerName: 'Category',
 			width: 120,
+      renderCell: (params) => {
+        return (
+          <div className='text-white font-play'>
+          {params.row.categories}
+          </div>
+        )
+      }
 		},
 		{
 			field: 'rating',
 			headerName: 'Rating',
 			width: 100,
+      renderCell: (params) => {
+        return (
+          <div className='text-white'>
+          {params.row.rating}
+          </div>
+        )
+      }
 		},
 		{
 			field: 'price',
 			headerName: 'Price',
 			width: 100,
 			renderCell: (params) => {
-				return <div>${params.row.price.toFixed(2)}</div>
+				return <div className='text-white font-play text-lg'>${params.row.price.toFixed(2)}</div>
 			},
 		},
 		{
@@ -74,7 +95,7 @@ const ProductList = ({ user }) => {
 			width: 100,
 			renderCell: (params) => {
 				return (
-					<>
+					<div className=''>
 						<Link to={'/product/' + params.row._id}>
 							<button className="productListEdit">Edit</button>
 						</Link>
@@ -82,7 +103,7 @@ const ProductList = ({ user }) => {
 							className="productListDelete"
 							onClick={() => handleDelete(params.row._id)}
 						/>
-					</>
+					</div>
 				)
 			},
 		},
@@ -96,12 +117,12 @@ const ProductList = ({ user }) => {
 					<Sidebar />
 				</div>
 
-				<div class="h-full w-full ml-10 mt-3 mb-10 font-play ">
-					<h1 className=" text-[2rem] text-blue-500  pb-2">Products</h1>
+				<div class="h-full w-full mx-6 mt-3 mb-10 font-play ">
+					<h1 className=" text-[2rem] text-[#FFFFFF]  pb-2">Products</h1>
 
 					<Box
 					
-						className=" w-[90%] h-[95vh]  bg-gray-600 rounded "
+						className=" w-[85%]  h-[95vh]  bg-[#3167b2] rounded "
 					>
 						<DataGrid
 							rows={products}
