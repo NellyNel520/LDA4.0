@@ -7,6 +7,7 @@ import { logout } from './redux/userRedux';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import ProductList from './pages/ProductList';
+import UserList from './pages/UserList';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
       <Route path="/" element={<Login />} />
       <Route path="/home" element={<Home user={user}/>} />
       <Route path="/products" element={<ProductList user={user}/>} />
+      <Route path="/users" element={<UserList user={user}/>} />
       </Routes>
     </div>
   );
