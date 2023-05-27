@@ -106,7 +106,7 @@ const UserList = ({user}) => {
 					<Sidebar />
 				</div>
 
-				<div class="h-full w-full mx-8 mt-3 mb-10 font-play ">
+				<div class="h-full w-full mx-8 mt-3 mb-10 font-abril ">
 					<h1 className=" text-[3rem] text-[#FFFFFF]  pb-2">Customers</h1>
 
 					<Box

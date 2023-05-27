@@ -117,8 +117,8 @@ const ProductList = ({ user }) => {
 					<Sidebar />
 				</div>
 
-				<div class="h-full w-full mx-6 mt-3 mb-10 font-play ">
-					<h1 className=" text-center text-[2rem] text-[#FFFFFF]  pb-2">Products</h1>
+				<div class="h-full w-full mx-6 mt-3 mb-10 font-abril ">
+					<h1 className=" text-[3rem] text-[#FFFFFF]  pb-2">Products</h1>
 
 					<Box
 					
