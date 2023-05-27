@@ -135,7 +135,7 @@ const UserInfo = () => {
 			<div>
 				<div class="rounded bg-gray-200 dark:bg-gray-800 p-3">
 					<div class="flex justify-between py-1 text-black dark:text-white">
-						<h3 class="text-xl font-abril font-semibold">Update User</h3>
+						<h3 class="text-3xl font-abril font-semibold text-blue-500">Update User</h3>
 					</div>
 					<div class="text-sm text-black dark:text-gray-50 mt-2">
 						{/* form */}
