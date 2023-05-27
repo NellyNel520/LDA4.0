@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import ProductDetails from '../components/ProductDetails'
+import ProductUpdate from '../components/ProductUpdate'
 
 // import ProductUpdate from '../../components/updateProduct/ProductUpdate'
 
@@ -45,10 +46,13 @@ const Product = ({ user }) => {
 				</div>
 
 				<div class="h-full w-full  mt-8 mb-10">
-					<div className=''>
+					
 						<ProductDetails product={product} />
-					</div>
+						<ProductUpdate product={product}/>
+					
 				</div>
+
+        
 			</div>
 		</div>
 	)
