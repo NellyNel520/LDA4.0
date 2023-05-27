@@ -108,6 +108,17 @@ export const getOrders = async (dispatch) => {
   }
 };
 
+export const getOrder = async (id, dispatch) => {
+  dispatch(getOrderStart());
+  try {
+    const res = await userRequest.get(`/orders/find/${id}`);
+    dispatch(getOrderSuccess(res.data));
+  } catch (err) {
+    dispatch(getOrderFailure());
+  }
+};
+
+
 // DELETE
 export const deleteProduct = async (id, dispatch) => {
   dispatch(deleteProductStart());

@@ -1,0 +1,113 @@
+import React from 'react'
+import EditIcon from '@mui/icons-material/Edit'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { useLocation } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { userRequest } from '../services/requestMethods'
+import getOrder from '../services/apiCalls'
+
+
+const OrderInfo = () => {
+  const location = useLocation()
+	const id = location.pathname.split('/')[2]
+  const [order, setOrder] = useState([])
+	
+	const dispatch = useDispatch()
+
+  useEffect(() => {
+		const getUsersOrders = async () => {
+			try {
+				const res = await userRequest.get(`orders/findById/${id}`)
+				setOrder(res.data)
+			} catch {}
+		}
+		getUsersOrders()
+		console.log(order)
+	}, [])
+
+	return (
+		<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 p-4 gap-4 text-black dark:text-white">
+			{/* <div class="md:col-span-2 xl:col-span-3">
+      <h3 class="text-lg font-semibold">Task summaries of recent sprints</h3>
+    </div> */}
+
+			{/* card 1 */}
+			<div class="md:col-span-2 xl:col-span-1">
+				<div class="rounded bg-gray-200 dark:bg-gray-800">
+        <form class="space-y-4 md:space-y-6 px-4 pt-6 pb-10" action="#">
+							<div>
+								<label
+									for="email"
+									class="block mb-2 text-md font-medium text-gray-900 dark:text-white font-abril text-lg md:text-2xl px-2 py-4"
+								>
+									Update Order Status:
+								</label>
+								<select
+									name="status"
+									id="status"
+                  // onChange={handleChange}
+									class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+									placeholder="name@company.com"
+									required="true"
+								
+								>
+                  <option>Select</option>
+									<option value="pending">pending</option>
+									<option value="approved">approved</option>
+									<option value="declined">declined</option>
+                </select>
+							</div>
+							
+
+							<button
+								// onClick={handleUpdate}
+							
+								class="w-full text-white bg-blue-500 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+							>
+								Update
+							</button>
+
+							
+						</form>
+        </div>
+			</div>
+
+			{/* card 2 */}
+			<div>
+				<div class="rounded bg-gray-200 dark:bg-gray-800 p-3">
+					<div class="flex justify-between py-1 text-black dark:text-white">
+						<h3 class="text-2xl font-abril font-semibold p-2">
+							Shipping Info
+						</h3>
+					</div>
+					<div class="text-sm text-black dark:text-gray-50 mt-2">
+						{/* form */}
+            {/* <div className='border bg-gray-300 rounded m-8 w-[30%] p-4 font-play'>
+							<div className='text-center text-xl'>Shipping Info</div>
+							<div className='orderShowInfo'>
+								Address: <span className='orderShowInfoTitle'> {order.address.line1}</span>
+							</div>
+							<div className='mt-[-1rem]'>
+								City: <span className='orderShowInfoTitle'> {order.address.city}</span>
+							</div>
+							<div className='mt-[]'>
+								State: <span className='orderShowInfoTitle'> {order.address.state}</span>
+							</div>
+							<div className='mt-[]'>
+								ZipCode: <span className='orderShowInfoTitle'> {order.address.postal_code}</span>
+							</div>
+							<div className='mt-[]'>
+								Country: <span className='orderShowInfoTitle'> {order.address.country}</span>
+							</div>
+
+						</div> */}
+					</div>
+				</div>
+			</div>
+			<div></div>
+		</div>
+	)
+}
+
+export default OrderInfo

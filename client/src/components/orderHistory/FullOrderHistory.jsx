@@ -6,7 +6,7 @@ import moment from 'moment'
 import '../../styles/order.css'
 
 const FullOrderHistory = ({user}) => {
-
+ 
   const id = user._id
 	console.log(id)
 	const [orders, setOrders] = useState([])

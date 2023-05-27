@@ -103,7 +103,7 @@ const ProductUpdate = ({ product }) => {
 	return (
 		<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 p-4 gap-4 text-black dark:text-white">
 			<div class="md:col-span-2 xl:col-span-3">
-				<h3 class="text-2xl text-center text-blue-400 font-semibold font-abril">
+				<h3 class="text-2xl md:text-5xl text-center text-blue-400 font-semibold font-abril">
 					Update Product
 				</h3>
 			</div>

@@ -56,7 +56,7 @@ const deleteOrder = async (req, res) => {
 	}
 }
 
-// Get user orders
+// Get user orders (current user)
 const getUserOrders = async (req, res) => {
 	const query = req.query.new
 	try {
@@ -68,6 +68,19 @@ const getUserOrders = async (req, res) => {
 		res.status(200).json(orders)
 	} catch (err) {
 		res.status(500).json(err)
+	}
+}
+
+const getOrderById = async (req, res) => {
+	try {
+		
+		const order = await Order.findById(req.params.orderId)
+		if (order) {
+			return res.status(200).json( [order] )
+		}
+		return res.status(404).send('Order with the specified ID does not exists')
+	} catch (error) {
+		return res.status(500).send(error.message)
 	}
 }
 
@@ -84,7 +97,6 @@ const getAllOrders = async (req, res) => {
 		res.status(500).json(err)
 	}
 }
-
 
 // get monthly income (admin only)
 
@@ -168,5 +180,5 @@ module.exports = {
 	getAllOrders,
 	getMonthlyIncome,
 	getCurrentMonthIncome,
-	
+	getOrderById,
 }
