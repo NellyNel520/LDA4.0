@@ -36,7 +36,7 @@ const ProductDetails = ({product}) => {
 							</div>
 							<div className="productInfoBottom text-md md:text-xl text-white">
 								<div className="productInfoItem ">
-									<span className="productInfoKey">Product Id:</span>
+									<span className="productInfoKey">Id:</span>
 									<span className="productInfoValue">{product._id}</span>
 								</div>
 								<div className="productInfoItem">

@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from '../components/Navbar'
 import  Sidebar  from '../components/Sidebar'
 import StatCards from '../components/StatCards'
+import UserActivity from '../components/UserActivity'
 import { useEffect, useMemo, useState } from "react";
 import { userRequest } from '../services/requestMethods'
 
@@ -56,6 +57,7 @@ const Home = ({user}) => {
 
       <div class="h-full w-full  mt-8 mb-10">
         <StatCards />
+        <UserActivity />
       </div>
 
     </div>
