@@ -32,6 +32,7 @@ const User = ({user}) => {
 
       <div class="h-full w-full  mt-8 mb-10">
         <UserInfo />
+        
         <UserOrderHistory customer={customer} />
       </div>
 

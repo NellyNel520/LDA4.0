@@ -37,7 +37,8 @@ const UserOrderHistory = ({customer}) => {
 
 
   return (
-    <div class="mt-8 mx-4">
+    <div class=" mx-4">
+    <h1 className='text-blue-500 text-4xl font-abril mb-4'>Order History</h1>
           <div class="p-4 bg-blue-50 dark:bg-gray-800 dark:text-gray-50 border border-blue-500 dark:border-gray-500 rounded-lg shadow-md">
             {/* <h4 class="text-lg font-semibold"></h4> */}
             
