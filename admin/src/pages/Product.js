@@ -55,9 +55,9 @@ const Product = ({ user }) => {
 				</div>
 
 				<div class="h-full w-full  mt-8 mb-10">
-					<div className='flex justify-between'>
+					<div className='flex-wrap md:flex justify-between'>
 						<ProductDetails product={product} />
-						<button onClick={() => handleDelete(product._id)} className="text-white justify-end mr-6 h-10 rounded bg-red-500 hover:bg-blue-500 p-2 border  ">Delete</button>
+						<button onClick={() => handleDelete(product._id)} className="text-white justify-end mx-6 h-10 rounded bg-red-500 hover:bg-blue-500 p-2 border  ">Delete</button>
 					</div>
 					<ProductUpdate product={product} />
 				</div>
