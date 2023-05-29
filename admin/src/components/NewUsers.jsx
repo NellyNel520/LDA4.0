@@ -20,11 +20,12 @@ const NewUsers = () => {
 	}, [])
 
   return (
-    <div className='widgetSm text-white'>
+    <div className='widgetSm text-white '>
+		    <h3 className="chartTitle font-play  text-2xl">Newest Users</h3>
       	<ul className="widgetSmList">
 				{users.map(user => (
 
-				<li className="widgetSmListItem" key={user._id}>
+				<li className="widgetSmListItem my-3" key={user._id}>
         <div className='flex'>
 
 					<img

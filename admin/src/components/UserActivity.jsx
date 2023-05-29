@@ -52,18 +52,13 @@ const UserActivity = () => {
 	return (
 		<div>
 			<div class="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-2 p-4 gap-4 text-black dark:text-white">
-				<div class="md:col-span-2 xl:col-span-3">
-					<h3 class="text-lg font-semibold">
-						Task summaries of recent sprints
-					</h3>
-				</div>
 
 				{/* Card 1 */}
 				<div class="md:col-span-2 xl:col-span-1">
 					<div class="rounded bg-gray-200 dark:bg-gray-800 p-3">
 						{/* Title */}
-						<div class="flex justify-between py-1 text-black dark:text-white">
-							<h3 class="text-2xl font-abril font-semibold text-blue-500">
+						{/* <div class="flex justify-between  text-black dark:text-white">
+							<h3 class="text-2xl font-abril ">
 								Newest Users
 							</h3>
 							<svg
@@ -73,7 +68,7 @@ const UserActivity = () => {
 							>
 								<path d="M5 10a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4zm7 0a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4zm7 0a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4z" />
 							</svg>
-						</div>
+						</div> */}
 						<NewUsers />
 					</div>
 				</div>
