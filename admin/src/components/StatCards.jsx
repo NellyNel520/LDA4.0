@@ -62,7 +62,7 @@ export default function StatCards() {
   useEffect(() => {
     const getIncome = async () => {
       try {
-        const res = await userRequest.get("orders/currentMonth-income");
+        const res = await userRequest.get("orders/income");
         setIncome(res.data);
         setPerc((res.data[0].total * 100) / res.data[1].total - 100);
         setCurrentMonthIncome(res.data[0].total);
