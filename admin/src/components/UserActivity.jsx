@@ -40,7 +40,7 @@ const UserActivity = () => {
 				res.data.map((item) =>
 					setUserStats((prev) => [
 						...prev,
-						{ name: MONTHS[item._id - 1], 'Active User': item.total },
+						{ name: MONTHS[item._id], 'Active User': item.total },
 					])
 				)
 			} catch {}

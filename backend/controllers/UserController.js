@@ -59,7 +59,7 @@ const getAllUsers = async (req, res) => {
 //GET USER STATS (total number user per month for the previous year)
 const getUserStats = async (req, res) => {
 	const date = new Date()
-	const lastYear = new Date(date.setFullYear(date.getFullYear()-1))
+	const lastYear = new Date(date.setFullYear(date.getFullYear() - 1))
 
 	try {
 		const data = await User.aggregate([
@@ -74,6 +74,9 @@ const getUserStats = async (req, res) => {
 					_id: '$month',
 					total: { $sum: 1 },
 				},
+			},
+			{
+				$sort: { _id: 1 },
 			},
 		])
 		res.status(200).json(data)
