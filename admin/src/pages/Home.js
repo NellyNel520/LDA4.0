@@ -5,6 +5,7 @@ import StatCards from '../components/StatCards'
 import UserActivity from '../components/UserActivity'
 import { useEffect, useMemo, useState } from "react";
 import { userRequest } from '../services/requestMethods'
+import RecentOrders from '../components/RecentOrders'
 
 const Home = ({user}) => {
   const [userStats, setUserStats] = useState([]); 
@@ -58,6 +59,7 @@ const Home = ({user}) => {
       <div class="h-full w-full  mt-8 mb-10">
         <StatCards />
         <UserActivity />
+        <RecentOrders />
       </div>
 
     </div>

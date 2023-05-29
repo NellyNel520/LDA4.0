@@ -18,9 +18,9 @@ const UserList = ({user}) => {
 	const users = useSelector((state) => state.customer.users) 
 
 
-	useEffect(() => {
-		getUsers(dispatch)
-	}, [dispatch])
+	// useEffect(() => {
+	// 	getUsers(dispatch)
+	// }, [dispatch])
 
   const handleDelete = (id) => {
 		deleteUser(id, dispatch)

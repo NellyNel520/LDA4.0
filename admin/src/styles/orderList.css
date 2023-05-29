@@ -37,16 +37,16 @@
   border-radius: 10px;
 }
 
-.orderStatusButton.approved{
+.orderStatusButton.APPROVED{
     background-color: #e5faf2;
     color: #3bb077;
 }
-.orderStatusButton.declined{
+.orderStatusButton.DECLINED{
     background-color: #fff0f1;
     color: #d95087;
 
 }
-.orderStatusButton.pending{
+.orderStatusButton.PENDING{
     background-color: #ebf1fe;
     color: #2a7ade;
 
