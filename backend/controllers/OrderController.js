@@ -73,10 +73,9 @@ const getUserOrders = async (req, res) => {
 
 const getOrderById = async (req, res) => {
 	try {
-		
 		const order = await Order.findById(req.params.orderId)
 		if (order) {
-			return res.status(200).json( [order] )
+			return res.status(200).json([order])
 		}
 		return res.status(404).send('Order with the specified ID does not exists')
 	} catch (error) {
@@ -127,6 +126,9 @@ const getMonthlyIncome = async (req, res) => {
 					_id: '$month',
 					total: { $sum: '$sales' },
 				},
+			},
+			{
+				$sort: { _id: -1 },
 			},
 		])
 		res.status(200).json(income)
