@@ -137,6 +137,45 @@ const getMonthlyIncome = async (req, res) => {
 	}
 }
 
+
+const getAnnualIncome = async (req, res) => {
+	const productId = req.query.pid
+	const date = new Date()
+	const currentYear = new Date(date.setYear(date.getYear()))
+	const previousYear = new Date(new Date().setYear(currentYear.getYear() - 1))
+
+	try {
+		const income = await Order.aggregate([
+			{
+				$match: {
+					createdAt: { $gte: previousYear },
+					...(productId && {
+						products: { $elemMatch: { productId } },
+					}),
+				},
+			},
+			{
+				$project: {
+					year: { $year: '$createdAt' },
+					sales: '$amount',
+				},
+			},
+			{
+				$group: {
+					_id: '$year',
+					total: { $sum: '$sales' },
+				},
+			},
+			{
+				$sort: { _id: -1 },
+			},
+		])
+		res.status(200).json(income)
+	} catch (err) {
+		res.status(500).json(err)
+	}
+}
+
 // const getCurrentMonthIncome = async (req, res) => {
 // 	const productId = req.query.pid
 // 	const date = new Date()
