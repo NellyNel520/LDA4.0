@@ -29,7 +29,7 @@ const AnnualSales = () => {
 		<div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md  items-center justify-between p-3 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
 			<div className="flex justify-between mt-1">
 				<div class="text-right">
-					<p className="text-lg font-play">Monthly Sales</p>
+					<p className="text-lg font-play">Annual Sales</p>
 				</div>
 
 				<div class="flex justify-center items-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">

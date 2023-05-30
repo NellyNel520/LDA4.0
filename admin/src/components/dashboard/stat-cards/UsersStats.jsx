@@ -58,7 +58,7 @@ const UsersStats = () => {
 			<div className="flex justify-between">
 				<div class="text-right text-xl font-play">
 					{/* <p class="text-2xl">{users.length}</p> */}
-					<p>Customers</p>
+					<p>Total Customers</p>
 				</div>
 
 				<div class="flex justify-center items-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">

@@ -9,6 +9,9 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
 const TotalOrders = () => {
 	const dispatch = useDispatch()
 	const orders = useSelector((state) => state.order.orders)
+	const [orderStats, setOrderStats] = useState([])
+	const [currentMonth, setCurrentMonth] = useState([])
+	const [perc, setPerc] = useState(0)
 
 	useEffect(() => {
 		getOrders(dispatch)
@@ -17,28 +20,74 @@ const TotalOrders = () => {
 	useEffect(() => {
 		getUsers(dispatch)
 	}, [dispatch])
+
+	const MONTHS = useMemo(
+		() => [
+			'Jan',
+			'Feb',
+			'Mar',
+			'Apr',
+			'May',
+			'Jun',
+			'Jul',
+			'Agu',
+			'Sep',
+			'Oct',
+			'Nov',
+			'Dec',
+		],
+		[]
+	)
+
+	useEffect(() => {
+		const getStats = async () => {
+			try {
+				const res = await userRequest.get('/orders/stats')
+				setOrderStats(res.data)
+				setCurrentMonth(res.data[0].total)
+				setPerc((res.data[0].total * 100) / res.data[1].total - 100)
+			} catch {}
+		}
+		getStats()
+		console.log(orderStats)
+	}, [MONTHS])
+
 	return (
-		<div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
-			<div class="flex justify-center items-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">
-				<svg
-					width="30"
-					height="30"
-					fill="none"
-					viewBox="0 0 24 24"
-					stroke="currentColor"
-					class="stroke-current text-blue-800 dark:text-gray-800 transform transition-transform duration-500 ease-in-out"
-				>
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-					></path>
-				</svg>
+		<div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md  items-center justify-between p-3 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
+			<div className="flex justify-between">
+				<div class="text-right text-xl font-play">
+					<p>Monthly Orders</p>
+				</div>
+				<div class="flex justify-center items-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">
+					<svg
+						width="30"
+						height="30"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke="currentColor"
+						class="stroke-current text-blue-800 dark:text-gray-800 transform transition-transform duration-500 ease-in-out"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+						></path>
+					</svg>
+				</div>
 			</div>
-			<div class="text-right">
-				<p class="text-2xl">{orders.length}</p>
-				<p>Orders</p>
+			<div className='text-2xl'>{currentMonth}</div>
+
+			<div className="flex justify-between mt-6">
+			<div>
+					{perc < 0 ? (
+						<ArrowDownwardIcon className="featuredIcon negative text-red-600" />
+					) : (
+						<ArrowUpwardIcon className="featuredIcon text-green-600" />
+					)}
+					<span>{Math.floor(perc)}%</span>
+				</div>
+				<div>Compared to last month</div>
 			</div>
 		</div>
 	)
