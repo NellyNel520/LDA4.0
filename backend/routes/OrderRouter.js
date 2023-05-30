@@ -22,5 +22,6 @@ router.get(
 router.get('/all', verifyTokenAndAdmin, controller.getAllOrders)
 router.get('/income', verifyTokenAndAdmin, controller.getMonthlyIncome)
 router.get('/annual-income', verifyTokenAndAdmin, controller.getYearlyIncome)
+router.get('/stats', verifyTokenAndAdmin, controller.getOrderStats)
 
 module.exports = router
