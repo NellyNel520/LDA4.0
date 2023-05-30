@@ -138,17 +138,17 @@ const getMonthlyIncome = async (req, res) => {
 }
 
 
-const getAnnualIncome = async (req, res) => {
+const getYearlyIncome = async (req, res) => {
 	const productId = req.query.pid
 	const date = new Date()
-	const currentYear = new Date(date.setYear(date.getYear()))
-	const previousYear = new Date(new Date().setYear(currentYear.getYear() - 1))
+	const year = new Date(date.setYear(date.getYear()))
+	const currentYear = new Date(new Date().setYear(year.getYear()))
 
 	try {
 		const income = await Order.aggregate([
 			{
 				$match: {
-					createdAt: { $gte: previousYear },
+					createdAt: { $gte: currentYear },
 					...(productId && {
 						products: { $elemMatch: { productId } },
 					}),
@@ -176,42 +176,8 @@ const getAnnualIncome = async (req, res) => {
 	}
 }
 
-// const getCurrentMonthIncome = async (req, res) => {
-// 	const productId = req.query.pid
-// 	const date = new Date()
-// 	const currentMonth = new Date(date.setMonth(date.getMonth()))
-// 	const previousMonth = new Date(
-// 		new Date().setMonth(currentMonth.getMonth() - 1)
-// 	)
 
-// 	try {
-// 		const income = await Order.aggregate([
-// 			{
-// 				$match: {
-// 					createdAt: { $gte: previousMonth },
-// 					...(productId && {
-// 						products: { $elemMatch: { productId } },
-// 					}),
-// 				},
-// 			},
-// 			{
-// 				$project: {
-// 					month: { $month: '$createdAt' },
-// 					sales: '$amount',
-// 				},
-// 			},
-// 			{
-// 				$group: {
-// 					_id: '$month',
-// 					total: { $sum: '$sales' },
-// 				},
-// 			},
-// 		])
-// 		res.status(200).json(income)
-// 	} catch (err) {
-// 		res.status(500).json(err)
-// 	}
-// }
+
 
 module.exports = {
 	createOrder,
@@ -220,6 +186,6 @@ module.exports = {
 	getUserOrders,
 	getAllOrders,
 	getMonthlyIncome,
-	// getCurrentMonthIncome,
 	getOrderById,
+	getYearlyIncome,
 }
