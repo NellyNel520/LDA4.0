@@ -4,21 +4,21 @@ import { useEffect, useState } from 'react'
 // import OrderProducts from './OrderProducts'
 import { useSelector, useDispatch } from 'react-redux'
 import { useLocation } from 'react-router-dom'
-import { useNavigate } from 'react-router' 
+import { useNavigate } from 'react-router'
 import moment from 'moment'
 import '../styles/orderHistory.css'
-import OrderProducts from './OrderProducts'
+import OrderProducts from './oder-info/OrderProducts'
 
-const UserOrderHistory = ({customer}) => {
-  const location = useLocation()
+const UserOrderHistory = ({ customer }) => {
+	const location = useLocation()
 	const id = location.pathname.split('/')[2]
-  const [orders, setOrders] = useState([])
+	const [orders, setOrders] = useState([])
 	const dispatch = useDispatch()
 	let navigate = useNavigate()
 	const user = useSelector((state) =>
-  state.customer.users.find((user) => user._id === id)
+		state.customer.users.find((user) => user._id === id)
 	)
-  // const userId = user._id
+	// const userId = user._id
 
 	const Button = ({ type }) => {
 		return <button className={'orderStatusButton ' + type}>{type}</button>
@@ -35,52 +35,59 @@ const UserOrderHistory = ({customer}) => {
 		console.log(orders)
 	}, [])
 
+	return (
+		<div class=" mx-4">
+			<h1 className="text-blue-500 text-4xl font-abril mb-4">Order History</h1>
+			<div class="p-4 bg-blue-50 dark:bg-gray-800 dark:text-gray-50 border border-blue-500 dark:border-gray-500 rounded-lg shadow-md">
+				{/* <h4 class="text-lg font-semibold"></h4> */}
 
-  return (
-    <div class=" mx-4">
-    <h1 className='text-blue-500 text-4xl font-abril mb-4'>Order History</h1>
-          <div class="p-4 bg-blue-50 dark:bg-gray-800 dark:text-gray-50 border border-blue-500 dark:border-gray-500 rounded-lg shadow-md">
-            {/* <h4 class="text-lg font-semibold"></h4> */}
-            
- {orders.slice(0, 60).map((order) => (
- <div className='mb-10'>
- <div className="order rounded ">
-   <div className="orderTop bg-[#316dc2] rounded mb-5 py-6 flex-wrap lg:flex border text-md lg:text-xl justify-between">
-     <div className="px-4 ">
-       <span className="font-bold text-gray-700 font-abril">Order Number </span>
-       <div>
-         <span>#{order._id}</span>
-       </div>
-     </div>
+				{orders.slice(0, 60).map((order) => (
+					<div className="mb-10">
+						<div className="order rounded ">
+							<div className="orderTop bg-[#316dc2] rounded mb-5 py-6 flex-wrap lg:flex border text-md lg:text-xl justify-between">
+								<div className="px-4 ">
+									<span className="font-bold text-gray-700 font-abril">
+										Order Number{' '}
+									</span>
+									<div>
+										<span>#{order._id}</span>
+									</div>
+								</div>
 
-     <div className="px-4">
-       <span className="font-bold  text-gray-700 font-abril">Date Placed</span>
+								<div className="px-4">
+									<span className="font-bold  text-gray-700 font-abril">
+										Date Placed
+									</span>
 
-       <div>{moment(order.createdAt).format('MMM DD, YYYY')}</div>
-     </div>
+									<div>{moment(order.createdAt).format('MMM DD, YYYY')}</div>
+								</div>
 
-     <div className="px-4">
-       <span className="font-bold  text-gray-700 font-abril">Total</span>
-       <div>${order.amount.toFixed(2)}</div>
-     </div>
+								<div className="px-4">
+									<span className="font-bold  text-gray-700 font-abril">
+										Total
+									</span>
+									<div>${order.amount.toFixed(2)}</div>
+								</div>
 
-     <div className="px-4">
-       <span className="font-bold  text-gray-700 font-abril ">Status</span>
-       
-       <div className='mt-2 '>
-         <Button type={order.status} />
-       </div>
-     </div>
-   </div>
- </div>
-   <div><OrderProducts order={order} /></div>
-</div>
-))}
+								<div className="px-4">
+									<span className="font-bold  text-gray-700 font-abril ">
+										Status
+									</span>
 
-
-          </div>
-        </div>
-  )
+									<div className="mt-2 ">
+										<Button type={order.status} />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div>
+							<OrderProducts order={order} />
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	)
 }
 
 export default UserOrderHistory

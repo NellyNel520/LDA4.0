@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import { useSelector } from 'react-redux'
 import { useEffect, useMemo, useState } from 'react'
-import { userRequest } from '../services/requestMethods'
+import { userRequest } from '../../services/requestMethods'
 
 
 const FilterColor = styled.div`

@@ -6,10 +6,10 @@ import {
 	uploadBytesResumable,
 	getDownloadURL,
 } from 'firebase/storage'
-import app from '../firebase'
+import app from '../../firebase'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
-import { updateProduct } from '../services/apiCalls'
+import { updateProduct } from '../../services/apiCalls'
 import { Link, useLocation } from 'react-router-dom'
 import { useNavigate } from 'react-router'
 

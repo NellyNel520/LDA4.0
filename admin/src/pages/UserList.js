@@ -12,31 +12,27 @@ import '../styles/userList.css'
 import { deleteUser, getUsers } from '../services/apiCalls'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 
-
-const UserList = ({user}) => {
-  const dispatch = useDispatch()
-	const users = useSelector((state) => state.customer.users) 
-
+const UserList = ({ user }) => {
+	const dispatch = useDispatch()
+	const users = useSelector((state) => state.customer.users)
 
 	// useEffect(() => {
 	// 	getUsers(dispatch)
 	// }, [dispatch])
 
-  const handleDelete = (id) => {
+	const handleDelete = (id) => {
 		deleteUser(id, dispatch)
 	}
 
-  const columns = [
-		{ field: '_id', headerName: 'ID', width: 150,
-    renderCell: (params) => {
-      return (
-        <div className='text-gray-400'>
-        {params.row._id}
-        </div>
-      )
-    },
-  
-  },
+	const columns = [
+		{
+			field: '_id',
+			headerName: 'ID',
+			width: 150,
+			renderCell: (params) => {
+				return <div className="text-gray-400">{params.row._id}</div>
+			},
+		},
 		{
 			field: 'user',
 			headerName: 'Name',
@@ -52,27 +48,23 @@ const UserList = ({user}) => {
 			},
 		},
 
-		{ field: 'email', headerName: 'Email', width: 250,
-    renderCell: (params) => {
-      return (
-        <div className='text-white font-play'>
-        {params.row.email}
-        </div>
-      )
-    },
-  
-  },
+		{
+			field: 'email',
+			headerName: 'Email',
+			width: 250,
+			renderCell: (params) => {
+				return <div className="text-white font-play">{params.row.email}</div>
+			},
+		},
 		{
 			field: 'phoneNumber',
 			headerName: 'Phone Number',
 			width: 200,
-      renderCell: (params) => {
-        return (
-          <div className='text-white text-md'>
-          {params.row.phoneNumber}
-          </div>
-        )
-      },
+			renderCell: (params) => {
+				return (
+					<div className="text-white text-md">{params.row.phoneNumber}</div>
+				)
+			},
 		},
 		// {
 		//   field: "transaction",
@@ -98,8 +90,8 @@ const UserList = ({user}) => {
 			},
 		},
 	]
-  return (
-    <div className='w-[100vw]'>
+	return (
+		<div className="w-[100vw]">
 			<Navbar user={user} />
 			<div className="flex">
 				<div>
@@ -109,10 +101,7 @@ const UserList = ({user}) => {
 				<div class="h-full w-full mx-8 mt-3 mb-10 font-abril ">
 					<h1 className=" text-[3rem] text-[#FFFFFF]  pb-2">Customers</h1>
 
-					<Box
-					
-						className=" w-[75%]  h-[95vh]  bg-[#3167b2] rounded "
-					>
+					<Box className=" w-[75%]  h-[95vh]  bg-[#3167b2] rounded ">
 						<DataGrid
 							rows={users}
 							disableSelectionOnClick
@@ -125,7 +114,7 @@ const UserList = ({user}) => {
 				</div>
 			</div>
 		</div>
-  )
+	)
 }
 
 export default UserList

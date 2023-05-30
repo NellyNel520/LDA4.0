@@ -2,10 +2,10 @@ import React from 'react'
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
 import StatCards from '../components/dashboard/stat-cards/index'
-import UserActivity from '../components/UserActivity'
+import UserActivity from '../components/dashboard/userAnalytics'
 import { useEffect, useMemo, useState } from 'react'
 import { userRequest } from '../services/requestMethods'
-import RecentOrders from '../components/RecentOrders'
+import RecentOrders from '../components/dashboard/latestOrders/RecentOrders'
 
 const Home = ({ user }) => {
 	const [userStats, setUserStats] = useState([])

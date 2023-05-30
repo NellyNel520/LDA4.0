@@ -7,8 +7,8 @@ import UserOrderHistory from '../components/UserOrderHistory';
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { useLocation } from 'react-router-dom'
-import OrderInfo from '../components/OrderInfo';
-import OrderDetails from '../components/OrderDetails';
+import OrderInfo from '../components/oder-info/OrderInfo';
+import OrderDetails from '../components/oder-info/OrderDetails';
 
 
 

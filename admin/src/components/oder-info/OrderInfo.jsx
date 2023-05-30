@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { userRequest } from '../services/requestMethods'
-import {getOrder, updateOrder} from '../services/apiCalls'
+import { userRequest } from '../../services/requestMethods'
+import {getOrder, updateOrder} from '../../services/apiCalls'
 import { useNavigate } from 'react-router'
 
 const OrderInfo = () => {

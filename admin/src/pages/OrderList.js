@@ -12,15 +12,14 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import { getOrders, deleteOrder } from '../services/apiCalls'
 import { format } from 'timeago.js'
 
-
-const OrderList = ({user}) => {
-  const dispatch = useDispatch()
+const OrderList = ({ user }) => {
+	const dispatch = useDispatch()
 	const orders = useSelector((state) => state.order.orders)
 
 	const Button = ({ type }) => {
 		return <button className={'orderStatusButton ' + type}>{type}</button>
 	}
- 
+
 	useEffect(() => {
 		getOrders(dispatch)
 	}, [dispatch])
@@ -29,16 +28,15 @@ const OrderList = ({user}) => {
 		deleteOrder(id, dispatch)
 	}
 
-
 	const columns = [
-		{ field: '_id', headerName: 'Order ID', width: 80,
-    renderCell: (params) => {
-      return (
-        <div className='text-gray-400 font-play'>
-        {params.row._id}
-        </div>
-      )
-    }, },
+		{
+			field: '_id',
+			headerName: 'Order ID',
+			width: 80,
+			renderCell: (params) => {
+				return <div className="text-gray-400 font-play">{params.row._id}</div>
+			},
+		},
 		{
 			field: 'email',
 			headerName: 'User Email',
@@ -56,7 +54,7 @@ const OrderList = ({user}) => {
 				)
 			},
 		},
-    {
+		{
 			field: 'status',
 			headerName: 'Status',
 			width: 120,
@@ -73,7 +71,11 @@ const OrderList = ({user}) => {
 			headerName: 'Date',
 			width: 200,
 			renderCell: (params) => {
-				return <div className='text-white font-play text-lg'>{format(params.row.createdAt)}</div>
+				return (
+					<div className="text-white font-play text-lg">
+						{format(params.row.createdAt)}
+					</div>
+				)
 			},
 		},
 		{
@@ -81,7 +83,11 @@ const OrderList = ({user}) => {
 			headerName: 'Items',
 			width: 110,
 			renderCell: (params) => {
-				return <div className='text-white text-xl font-play'>{params.row.products.length}</div>
+				return (
+					<div className="text-white text-xl font-play">
+						{params.row.products.length}
+					</div>
+				)
 			},
 		},
 		{
@@ -89,7 +95,11 @@ const OrderList = ({user}) => {
 			headerName: 'Total',
 			width: 160,
 			renderCell: (params) => {
-				return <div className='text-white text-lg font-play'>${params.row.amount.toFixed(2)}</div>
+				return (
+					<div className="text-white text-lg font-play">
+						${params.row.amount.toFixed(2)}
+					</div>
+				)
 			},
 		},
 		{
@@ -111,34 +121,31 @@ const OrderList = ({user}) => {
 			},
 		},
 	]
-  return (
-    <div className='w-[100vw]'>
-    <Navbar user={user} />
-    <div className="flex">
-      <div>
-        <Sidebar />
-      </div>
+	return (
+		<div className="w-[100vw]">
+			<Navbar user={user} />
+			<div className="flex">
+				<div>
+					<Sidebar />
+				</div>
 
-      <div class="h-full w-full mx-8 mt-3 mb-10 font-abril ">
-        <h1 className=" text-[3rem] text-[#FFFFFF]  pb-2">Transactions</h1>
+				<div class="h-full w-full mx-8 mt-3 mb-10 font-abril ">
+					<h1 className=" text-[3rem] text-[#FFFFFF]  pb-2">Transactions</h1>
 
-        <Box
-        
-          className=" w-[85%]  h-[95vh]  bg-[#3167b2] rounded "
-        >
-          <DataGrid
-            rows={orders}
-            disableSelectionOnClick
-            columns={columns}
-            getRowId={(row) => row._id}
-            pageSize={8}
-            checkboxSelection
-          />
-        </Box>
-      </div>
-    </div>
-  </div>
-  )
+					<Box className=" w-[85%]  h-[95vh]  bg-[#3167b2] rounded ">
+						<DataGrid
+							rows={orders}
+							disableSelectionOnClick
+							columns={columns}
+							getRowId={(row) => row._id}
+							pageSize={8}
+							checkboxSelection
+						/>
+					</Box>
+				</div>
+			</div>
+		</div>
+	)
 }
 
 export default OrderList
