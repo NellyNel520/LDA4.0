@@ -12,6 +12,11 @@ const AnnualSales = () => {
 	const [annualPercent, setAnnualPercent] = useState(0)
 	const dispatch = useDispatch()
 
+	let USDollar = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+});
+
 	useEffect(() => {
 		const getAnnualIncome = async () => {
 			try {
@@ -50,7 +55,7 @@ const AnnualSales = () => {
 					</svg>
 				</div>
 			</div>
-			<div className='text-2xl'>${currentYearIncome}</div>
+			<div className='text-2xl'>{USDollar.format(currentYearIncome)}</div>
 
 			<div className="flex justify-between mt-6">
 				<div>

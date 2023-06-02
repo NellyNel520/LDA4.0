@@ -13,6 +13,11 @@ const MonthSales = () => {
 	const dispatch = useDispatch()
 	const orders = useSelector((state) => state.order.orders)
 
+	let USDollar = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+});
+
 	useEffect(() => {
 		getOrders(dispatch)
 	}, [dispatch])
@@ -20,10 +25,10 @@ const MonthSales = () => {
 	useEffect(() => {
 		const getMonthlyIncome = async () => {
 			try {
-				const res = await userRequest.get('orders/income')
+				const res = await userRequest.get('orders/stats')
 				setIncome(res.data)
-				setPerc((res.data[0].total * 100) / res.data[1].total - 100)
-				setCurrentMonthIncome(res.data[0].total)
+				setPerc((res.data[0].income * 100) / res.data[1].income - 100)
+				setCurrentMonthIncome(res.data[0].income)
 			} catch {}
 		}
 		getMonthlyIncome()
@@ -53,7 +58,7 @@ const MonthSales = () => {
 				</div>
 			</div>
 
-			<div className="text-2xl">${currentMonthIncome}</div>
+			<div className="text-2xl">{USDollar.format(currentMonthIncome)}</div>
 			<div className="flex justify-between mt-6">
 				<div>
 					{perc < 0 ? (

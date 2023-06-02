@@ -15,7 +15,7 @@ const UserChart = ({grid, data, title, dataKey}) => {
     <div className='pr-5'>
          
       <h3 className="chartTitle font-play  text-2xl">{title}</h3>
-      <ResponsiveContainer width="100%" aspect={4/ 2.5} className="p-5">
+      <ResponsiveContainer width="100%" aspect={4/ 2} className="p-5">
         <LineChart data={data} >
           <XAxis dataKey="name" stroke="#1182F4" />
           <Line type="monotone" dataKey={dataKey} stroke="#1182F4" />

@@ -2,10 +2,11 @@ import React from 'react'
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
 import StatCards from '../components/dashboard/stat-cards/index'
-import UserActivity from '../components/dashboard/userAnalytics'
 import { useEffect, useMemo, useState } from 'react'
 import { userRequest } from '../services/requestMethods'
 import RecentOrders from '../components/dashboard/latestOrders/RecentOrders'
+import NewestUsers from '../components/dashboard/userAnalytics/NewestUsers'
+import Chart from '../components/dashboard/userAnalytics/Chart'
 
 const Home = ({ user }) => {
 	const [userStats, setUserStats] = useState([])
@@ -52,9 +53,13 @@ const Home = ({ user }) => {
 					<Sidebar />
 				</div>
 
-				<div class="h-full w-full  mt-8 mb-10">
+				<div class="h-[100vh] w-full ">
 					<StatCards />
-					<UserActivity />
+					<div className="block md:flex lg:flex justify-between m-4 ">
+						<NewestUsers />
+						<Chart />
+					</div>
+					{/* <UserActivity /> */}
 					<RecentOrders />
 				</div>
 			</div>

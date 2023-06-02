@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const controller = require('../controllers/OrderController')
 const {
-	verifyToken,
+	verifyToken ,
 	verifyTokenAndAuthorization,
 	verifyTokenAndAdmin,
 } = require('../controllers/VerifyToken')
@@ -20,7 +20,7 @@ router.get(
 	controller.getOrderById
 )
 router.get('/all', verifyTokenAndAdmin, controller.getAllOrders)
-router.get('/income', verifyTokenAndAdmin, controller.getMonthlyIncome)
+router.get('/stats/sales', verifyTokenAndAdmin, controller.getProductSalesStats)
 router.get('/annual-income', verifyTokenAndAdmin, controller.getYearlyIncome)
 router.get('/stats', verifyTokenAndAdmin, controller.getOrderStats)
 

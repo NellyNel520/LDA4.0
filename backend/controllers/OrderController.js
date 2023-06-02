@@ -99,45 +99,38 @@ const getAllOrders = async (req, res) => {
 
 // get monthly income (admin only)
 
-const getMonthlyIncome = async (req, res) => {
-	const productId = req.query.pid
-	const date = new Date()
-	const lastMonth = new Date(date.setMonth(date.getMonth() - 1))
-	const previousMonth = new Date(new Date().setMonth(lastMonth.getMonth() - 1))
+// const getMonthlyIncome = async (req, res) => {
+// 	const date = new Date()
+// 	const lastYear = new Date(date.setFullYear(date.getFullYear() - 1))
 
-	try {
-		const income = await Order.aggregate([
-			{
-				$match: {
-					createdAt: { $gte: previousMonth },
-					...(productId && {
-						products: { $elemMatch: { productId } },
-					}),
-				},
-			},
-			{
-				$project: {
-					month: { $month: '$createdAt' },
-					sales: '$amount',
-				},
-			},
-			{
-				$group: {
-					_id: '$month',
-					total: { $sum: '$sales' },
-				},
-			},
-			{
-				$sort: { _id: -1 },
-			},
-		])
-		res.status(200).json(income)
-	} catch (err) {
-		res.status(500).json(err)
-	}
-}
+// 	try {
+// 		const income = await Order.aggregate([
+// 			{
+// 				$match: { createdAt: { $gte: lastYear } },
+// 			},
+// 			{
+// 				$project: {
+// 					month: { $month: '$createdAt' },
+// 					sales: '$amount',
+// 				},
+// 			},
+// 			{
+// 				$group: {
+// 					_id: '$month',
+// 					total: { $sum: '$sales' },
+// 				},
+// 			},
+// 			{
+// 				$sort: { _id: -1 },
+// 			},
+// 		])
+// 		res.status(200).json(income)
+// 	} catch (err) {
+// 		res.status(500).json(err)
+// 	}
+// }
 
-const getOrderStats = async (req, res) => {
+const getProductSalesStats = async (req, res) => {
 	const date = new Date()
 	const lastYear = new Date(date.setFullYear(date.getFullYear() - 1))
 
@@ -147,12 +140,14 @@ const getOrderStats = async (req, res) => {
 			{
 				$project: {
 					month: { $month: '$createdAt' },
+					products: '$products.productId',
 				},
 			},
 			{
 				$group: {
 					_id: '$month',
 					total: { $sum: 1 },
+					products: ['products.productId'],
 				},
 			},
 			{
@@ -165,8 +160,40 @@ const getOrderStats = async (req, res) => {
 	}
 }
 
+const getOrderStats = async (req, res) => {
+	const productId = req.query.pid
+	const date = new Date()
+	const lastYear = new Date(date.setFullYear(date.getFullYear() - 1))
 
-
+	try {
+		const data = await Order.aggregate([
+			{
+				$match: {
+					createdAt: { $gte: lastYear },
+				},
+			},
+			{
+				$project: {
+					month: { $month: '$createdAt' },
+					sales: '$amount',
+				},
+			},
+			{
+				$group: {
+					_id: '$month',
+					total: { $sum: 1 },
+					income: { $sum: '$sales' },
+				},
+			},
+			{
+				$sort: { _id: -1 },
+			},
+		])
+		res.status(200).json(data)
+	} catch (err) {
+		res.status(500).json(err)
+	}
+}
 
 const getYearlyIncome = async (req, res) => {
 	const productId = req.query.pid
@@ -206,17 +233,15 @@ const getYearlyIncome = async (req, res) => {
 	}
 }
 
-
-
-
 module.exports = {
 	createOrder,
 	updateOrder,
 	deleteOrder,
 	getUserOrders,
 	getAllOrders,
-	getMonthlyIncome,
+	// getMonthlyIncome,
+	getProductSalesStats,
 	getOrderById,
 	getYearlyIncome,
-	getOrderStats
+	getOrderStats,
 }
