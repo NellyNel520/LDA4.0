@@ -16,8 +16,9 @@ const Chart = () => {
 
 	const MONTHS = useMemo(
 		() => [
+			'Start',
 			'Jan',
-			'Feb',
+			'Feb', 
 			'Mar',
 			'Apr',
 			'May',

@@ -24,7 +24,9 @@ const AnnualSales = () => {
 				console.log(res.data[0].total)
 				setAnnualIncome(res.data)
 				setCurrentYearIncome(res.data[0].total)
-				setAnnualPercent((res.data[0].total * 100) / res.data[1].total - 100)
+				setAnnualPercent((res.data[0].total * 100) / res.data[0].total 
+				// -100
+				)
 			} catch {}
 		}
 		getAnnualIncome()

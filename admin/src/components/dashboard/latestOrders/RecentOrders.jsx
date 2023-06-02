@@ -17,7 +17,7 @@ const RecentOrders = () => {
 				const res = await userRequest.get('/orders/all/?new=true')
 				setOrders(res.data)
 			} catch {}
-		}
+		} 
 		getOrders()
 	}, [])
 

@@ -7,6 +7,7 @@ import { userRequest } from '../services/requestMethods'
 import RecentOrders from '../components/dashboard/latestOrders/RecentOrders'
 import NewestUsers from '../components/dashboard/userAnalytics/NewestUsers'
 import Chart from '../components/dashboard/userAnalytics/Chart'
+import OrderChart from '../components/dashboard/latestOrders/OrderChart'
 
 const Home = ({ user }) => {
 	const [userStats, setUserStats] = useState([])
@@ -54,13 +55,16 @@ const Home = ({ user }) => {
 				</div>
 
 				<div class="h-[100vh] w-full ">
-					<StatCards />
+					<StatCards /> 
 					<div className="block md:flex lg:flex justify-between m-4 ">
 						<NewestUsers />
 						<Chart />
 					</div>
+					<div className='block md:flex lg:flex justify-between m-4 h-[70%]'>
+						<RecentOrders />
+						<OrderChart />
+					</div>
 					{/* <UserActivity /> */}
-					<RecentOrders />
 				</div>
 			</div>
 		</div>
