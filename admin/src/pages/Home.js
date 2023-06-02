@@ -61,8 +61,8 @@ const Home = ({ user }) => {
 						<Chart />
 					</div>
 					<div className='block md:flex lg:flex justify-between m-4 h-[70%]'>
-						<RecentOrders />
 						<OrderChart />
+						<RecentOrders />
 					</div>
 					{/* <UserActivity /> */}
 				</div>
