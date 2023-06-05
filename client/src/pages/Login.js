@@ -27,7 +27,7 @@ const Login = () => {
       </a> */}
 				<div className="regWrapper w-full  rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0 ">
 					<div className="p-10 space-y-4 md:space-y-6 sm:p-8">
-						<p className=" text-center font-bold  font-play text-blue-600 md:text-[3rem] ">
+						<p className=" text-center font-bold  font-play text-white md:text-[3rem] ">
 							Login
 						</p>
 						<form className="space-y-4 md:space-y-6" action="#">
