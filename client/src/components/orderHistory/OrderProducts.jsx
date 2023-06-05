@@ -28,17 +28,17 @@ const OrderProducts = ({order}) => {
     <div>
     {products.map((product) => (
       <div
-										class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start"
+										className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start"
 										key={product._id}
 									>
 										<img
 											src={product.img}
 											alt="productImage"
-											class="w-full rounded-lg sm:w-40"
+											className="w-full rounded-lg sm:w-40"
 										/>
-										<div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
-											<div class="mt-5 sm:mt-0">
-												<h2 class="text-lg font-bold text-gray-900">
+										<div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
+											<div className="mt-5 sm:mt-0">
+												<h2 className="text-lg font-bold text-gray-900">
 													{product.title}
 												</h2>
 												<p className="text-blue-400 mb-4">{product._id}</p>
@@ -53,13 +53,13 @@ const OrderProducts = ({order}) => {
 													/>
 												</div>
 											</div>
-											<div class="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
-												<div class="flex items-center border-gray-100">
-													<span class=" py-1 px-3.5 text-black">
+											<div className="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
+												<div className="flex items-center border-gray-100">
+													<span className=" py-1 px-3.5 text-black">
 													qty:
 													</span>
 													{/* <input
-													class="h-8 w-8 border bg-white text-center text-xs outline-none"
+													className="h-8 w-8 border bg-white text-center text-xs outline-none"
 													type="number"
 													value="2"
 													min="1"
@@ -69,8 +69,8 @@ const OrderProducts = ({order}) => {
 													</ProductAmount>
 												
 												</div>
-												<div class="flex items-center space-x-4  text-black">
-													<p class="text-xl">
+												<div className="flex items-center space-x-4  text-black">
+													<p className="text-xl">
 														${(product.price * product.quantity).toFixed(2) }
 													</p>
 													{/* <DeleteIcon

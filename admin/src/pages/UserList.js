@@ -1,15 +1,13 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
-import { useEffect, useMemo, useState } from 'react'
-import { userRequest } from '../services/requestMethods'
 import { useDispatch, useSelector } from 'react-redux'
-import { Box, useTheme } from '@mui/material'
+import { Box } from '@mui/material'
 import { DataGrid } from '@mui/x-data-grid'
 import { Link } from 'react-router-dom'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import '../styles/userList.css'
-import { deleteUser, getUsers } from '../services/apiCalls'
+import { deleteUser } from '../services/apiCalls'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 
 const UserList = ({ user }) => {
@@ -98,7 +96,7 @@ const UserList = ({ user }) => {
 					<Sidebar />
 				</div>
 
-				<div class="h-full w-full mx-8 mt-3 mb-10 font-abril ">
+				<div className="h-full w-full mx-8 mt-3 mb-10 font-abril ">
 					<h1 className=" text-[3rem] text-[#FFFFFF]  pb-2">Customers</h1>
 
 					<Box className=" w-[75%]  h-[95vh]  bg-[#3167b2] rounded ">

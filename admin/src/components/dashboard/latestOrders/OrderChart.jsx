@@ -41,21 +41,21 @@ const OrderChart = () => {
 			} catch {}
 		}
 		getStats()
-		console.log(orderStats)
+		// console.log(orderStats)
 	}, [MONTHS])
 
   return (
-    <div class="relative flex flex-col min-w-0 break-words bg-gray-50 dark:bg-gray-800 w-full shadow-lg rounded mt-12">
-    <div class="rounded-t mb-0 px-0 border-0">
-      <div class="flex flex-wrap items-center px-4 py-2">
-        <div class="relative w-full max-w-full flex-grow flex-1">
-          <h3 class="font-semibold text-lg text-gray-900 dark:text-gray-50 font-abril">
+    <div className="relative flex flex-col min-w-0 break-words bg-gray-50 dark:bg-gray-800 w-full shadow-lg rounded mt-12">
+    <div className="rounded-t mb-0 px-0 border-0">
+      <div className="flex flex-wrap items-center px-4 py-2">
+        <div className="relative w-full max-w-full flex-grow flex-1">
+          <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-50 font-abril">
             Order Analytics
           </h3>
         </div>
-        <div class="relative w-full max-w-full flex-grow flex-1 text-right">
+        <div className="relative w-full max-w-full flex-grow flex-1 text-right">
           <button
-            class="bg-blue-500 dark:bg-gray-100 text-white active:bg-blue-600 dark:text-gray-800 dark:active:text-gray-700 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+            className="bg-blue-500 dark:bg-gray-100 text-white active:bg-blue-600 dark:text-gray-800 dark:active:text-gray-700 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
             type="button"
           >
             Reports
@@ -63,7 +63,7 @@ const OrderChart = () => {
         </div>
       </div>
 
-      <div class="block w-full pr-3 h-[35%]">
+      <div className="block w-full pr-3 h-[35%]">
         {/* Chart */}
         <ResponsiveContainer width="100%" aspect={4/ 3} className="py-7 mr-2">
         <BarChart data={orderStats}>

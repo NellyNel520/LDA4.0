@@ -1,10 +1,9 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
-import { useEffect, useMemo, useState } from 'react'
-import { userRequest } from '../services/requestMethods'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Box, useTheme } from '@mui/material'
+import { Box } from '@mui/material'
 import { DataGrid } from '@mui/x-data-grid'
 import { Link } from 'react-router-dom'
 import '../styles/orderList.css'
@@ -129,7 +128,7 @@ const OrderList = ({ user }) => {
 					<Sidebar />
 				</div>
 
-				<div class="h-full w-full mx-8 mt-3 mb-10 font-abril ">
+				<div className="h-full w-full mx-8 mt-3 mb-10 font-abril ">
 					<h1 className=" text-[3rem] text-[#FFFFFF]  pb-2">Transactions</h1>
 
 					<Box className=" w-[85%]  h-[95vh]  bg-[#3167b2] rounded ">

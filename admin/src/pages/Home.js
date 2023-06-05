@@ -43,7 +43,7 @@ const Home = ({ user }) => {
 			} catch {}
 		}
 		getStats()
-		console.log(userStats)
+
 	}, [MONTHS])
 
 	return (
@@ -54,7 +54,7 @@ const Home = ({ user }) => {
 					<Sidebar />
 				</div>
 
-				<div class="h-[100vh] w-full ">
+				<div className="h-[100vh] w-[95vw] ">
 					<StatCards /> 
 					<div className="block md:flex lg:flex justify-between m-4 ">
 						<NewestUsers />

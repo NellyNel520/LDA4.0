@@ -242,7 +242,7 @@ const ProductDetails = () => {
 
 						{product.inStock > 0 && (
 							<button
-								class="flex ml-auto text-white bg-blue-600 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-400 rounded"
+								className="flex ml-auto text-white bg-blue-600 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-400 rounded"
 								onClick={handleClick}
 							>
 								Add to Cart

@@ -36,10 +36,10 @@ const UserOrderHistory = ({ customer }) => {
 	}, [])
 
 	return (
-		<div class=" mx-4">
+		<div className=" mx-4">
 			<h1 className="text-blue-500 text-4xl font-abril mb-4">Order History</h1>
-			<div class="p-4 bg-blue-50 dark:bg-gray-800 dark:text-gray-50 border border-blue-500 dark:border-gray-500 rounded-lg shadow-md">
-				{/* <h4 class="text-lg font-semibold"></h4> */}
+			<div className="p-4 bg-blue-50 dark:bg-gray-800 dark:text-gray-50 border border-blue-500 dark:border-gray-500 rounded-lg shadow-md">
+				{/* <h4 className="text-lg font-semibold"></h4> */}
 
 				{orders.slice(0, 60).map((order) => (
 					<div className="mb-10">

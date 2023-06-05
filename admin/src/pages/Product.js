@@ -2,8 +2,7 @@ import React from 'react'
 import '../styles/product.css'
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
-import { useEffect, useMemo, useState } from 'react'
-import { userRequest } from '../services/requestMethods'
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
@@ -54,7 +53,7 @@ const Product = ({ user }) => {
 					<Sidebar />
 				</div>
 
-				<div class="h-full w-full  mt-8 mb-10">
+				<div className="h-full w-full  mt-8 mb-10">
 					<div className='flex-wrap md:flex justify-between'>
 						<ProductDetails product={product} />
 						<button onClick={() => handleDelete(product._id)} className="text-white justify-end mx-6 h-10 rounded bg-red-500 hover:bg-blue-500 p-2 border  ">Delete</button>

@@ -3,18 +3,18 @@ import React from 'react'
 const Footer = () => {
 	return (
 		<div className="text-blue-400">
-			<footer class="bg-gray-600">
-				<div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
-					<div class="md:flex md:justify-between">
-						<div class="mb-6 md:mb-0">
-							<div class="flex items-center">
+			<footer className="bg-gray-600">
+				<div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+					<div className="md:flex md:justify-between">
+						<div className="mb-6 md:mb-0">
+							<div className="flex items-center">
 							<div>
 								<img
 									src="https://i.postimg.cc/5tQscMm2/LDA-Logo-Blue1.png"
 									alt="logo"
 									className="h-[10rem] mr-2 "
 								/>
-								<span class="self-center text-2xl font-semibold whitespace-nowrap font-play ">
+								<span className="self-center text-2xl font-semibold whitespace-nowrap font-play ">
 									London Dior Apparel
 								</span>
 								</div>
@@ -29,43 +29,43 @@ const Footer = () => {
 
 							
 						</div>
-						<div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3 mt-7 font-play text-lg">
+						<div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3 mt-7 font-play text-lg">
 							<div>
-								<h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+								<h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
 									Resources
 								</h2>
-								<ul class="text-gray-400 font-medium">
-									<li class="mb-2 ">
-										<a href="/products" class=" hover:text-blue-500">
+								<ul className="text-gray-400 font-medium">
+									<li className="mb-2 ">
+										<a href="/products" className=" hover:text-blue-500">
 											Products
 										</a>
 									</li> 
-									<li class="mb-2">
-										<a href="/" class=" hover:text-blue-500">
+									<li className="mb-2">
+										<a href="/" className=" hover:text-blue-500">
 											My Account
 										</a>
 									</li>
-                  <li class="mb-2">
-										<a href="/" class=" hover:text-blue-500">
+                  <li className="mb-2">
+										<a href="/" className=" hover:text-blue-500">
 											Home
 										</a>
 									</li>
-                  <li class="mb-2">
-										<a href="/" class=" hover:text-blue-500">
+                  <li className="mb-2">
+										<a href="/" className=" hover:text-blue-500">
 											About
 										</a>
 									</li>
 								</ul>
 							</div>
 							<div>
-								<h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+								<h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
 									Follow us
 								</h2>
-								<ul class="text-gray-400 font-medium">
-									<li class="mb-2">
+								<ul className="text-gray-400 font-medium">
+									<li className="mb-2">
 										<a
 											href="https://github.com/NellyNel520"
-											class="hover:text-blue-500 "
+											className="hover:text-blue-500 "
 										>
 											Github
 										</a>
@@ -73,7 +73,7 @@ const Footer = () => {
 									<li>
 										<a
 											href="https://www.linkedin.com/in/channelharris/"
-											class="hover:text-blue-500"
+											className="hover:text-blue-500"
 										>
 											LinkedIn
 										</a>
@@ -81,17 +81,17 @@ const Footer = () => {
 								</ul>
 							</div>
 							<div>
-								<h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+								<h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
 									Legal
 								</h2>
-								<ul class="text-gray-600 dark:text-gray-400 font-medium">
-									<li class="mb-4">
-										<a href="/" class="hover:text-blue-500">
+								<ul className="text-gray-600 dark:text-gray-400 font-medium">
+									<li className="mb-4">
+										<a href="/" className="hover:text-blue-500">
 											Privacy Policy
 										</a>
 									</li>
 									<li>
-										<a href="/" class="hover:text-blue-500">
+										<a href="/" className="hover:text-blue-500">
 											Terms &amp; Conditions
 										</a>
 									</li>
@@ -99,22 +99,22 @@ const Footer = () => {
 							</div>
 						</div>
 					</div>
-					<hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-					<div class="sm:flex sm:items-center sm:justify-between">
-						<span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+					<hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+					<div className="sm:flex sm:items-center sm:justify-between">
+						<span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
 							© 2023{' '}
-							<a href="https://flowbite.com/" class="hover:underline">
+							<a href="https://flowbite.com/" className="hover:underline">
 								London Dior Apparel™
 							</a>
 							. All Rights Reserved.
 						</span>
-						<div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
+						<div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
 							<a
 								href="#"
-								class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+								className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
 							>
 								<svg
-									class="w-5 h-5"
+									className="w-5 h-5"
 									fill="currentColor"
 									viewBox="0 0 24 24"
 									aria-hidden="true"
@@ -125,14 +125,14 @@ const Footer = () => {
 										clip-rule="evenodd"
 									/>
 								</svg>
-								<span class="sr-only">Facebook page</span>
+								<span className="sr-only">Facebook page</span>
 							</a>
 							<a
 								href="#"
-								class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+								className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
 							>
 								<svg
-									class="w-5 h-5"
+									className="w-5 h-5"
 									fill="currentColor"
 									viewBox="0 0 24 24"
 									aria-hidden="true"
@@ -143,28 +143,28 @@ const Footer = () => {
 										clip-rule="evenodd"
 									/>
 								</svg>
-								<span class="sr-only">Instagram page</span>
+								<span className="sr-only">Instagram page</span>
 							</a>
 							<a
 								href="#"
-								class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+								className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
 							>
 								<svg
-									class="w-5 h-5"
+									className="w-5 h-5"
 									fill="currentColor"
 									viewBox="0 0 24 24"
 									aria-hidden="true"
 								>
 									<path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
 								</svg>
-								<span class="sr-only">Twitter page</span>
+								<span className="sr-only">Twitter page</span>
 							</a>
 							<a
 								href="https://github.com/NellyNel520"
-								class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+								className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
 							>
 								<svg
-									class="w-5 h-5"
+									className="w-5 h-5"
 									fill="currentColor"
 									viewBox="0 0 24 24"
 									aria-hidden="true"
@@ -175,7 +175,7 @@ const Footer = () => {
 										clip-rule="evenodd"
 									/>
 								</svg>
-								<span class="sr-only">GitHub account</span>
+								<span className="sr-only">GitHub account</span>
 							</a>
 							
 						</div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import {
 	getStorage,
 	ref,
@@ -7,10 +7,8 @@ import {
 	getDownloadURL,
 } from 'firebase/storage'
 import app from '../../firebase'
-import axios from 'axios'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { updateProduct } from '../../services/apiCalls'
-import { Link, useLocation } from 'react-router-dom'
 import { useNavigate } from 'react-router'
 
 const ProductUpdate = ({ product }) => {
@@ -101,23 +99,23 @@ const ProductUpdate = ({ product }) => {
 	}
  
 	return (
-		<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 p-4 gap-4 text-black dark:text-white">
-			<div class="md:col-span-2 xl:col-span-3">
-				<h3 class="text-2xl md:text-5xl text-center text-blue-400 font-semibold font-abril">
+		<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 p-4 gap-4 text-black dark:text-white">
+			<div className="md:col-span-2 xl:col-span-3">
+				<h3 className="text-2xl md:text-5xl text-center text-blue-400 font-semibold font-abril">
 					Update Product
 				</h3>
 			</div>
       
 
 			{/* 1st card */}
-			<div class="md:col-span-2 xl:col-span-1">
-				<div class="rounded bg-gray-200 dark:bg-gray-800 p-3">
+			<div className="md:col-span-2 xl:col-span-1">
+				<div className="rounded bg-gray-200 dark:bg-gray-800 p-3">
 					{/* form */}
-					<form class="space-y-1 md:space-y-2 font-play" action="#">
+					<form className="space-y-1 md:space-y-2 font-play" action="#">
 						<div className="">
 							<label
 								for="email"
-								class="block mb-2 text-md font-medium text-gray-900 dark:text-white"
+								className="block mb-2 text-md font-medium text-gray-900 dark:text-white"
 							>
 								Product Name
 							</label>
@@ -127,14 +125,14 @@ const ProductUpdate = ({ product }) => {
 								type="text"
 								placeholder={product.title}
 								id="email"
-								class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+								className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 								required="true"
 							/>
 						</div>
 						<div>
 							<label
 								for="password"
-								class="block mb-2 text-md font-medium text-gray-900 dark:text-white"
+								className="block mb-2 text-md font-medium text-gray-900 dark:text-white"
 							>
 								Product Description
 							</label>
@@ -145,14 +143,14 @@ const ProductUpdate = ({ product }) => {
 								cols="50"
 								placeholder={product.desc}
 								id="password"
-								class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+								className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 								required="true"
 							/>
 						</div>
 						<div>
 							<label
 								for="password"
-								class="block mb-2 text-md font-medium text-gray-900 dark:text-white"
+								className="block mb-2 text-md font-medium text-gray-900 dark:text-white"
 							>
 								Categories
 							</label>
@@ -161,14 +159,14 @@ const ProductUpdate = ({ product }) => {
 								onChange={handleChange}
 								type="text"
 								name="categories"
-								class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+								className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 								required="true"
 							/>
 						</div>
 						<div>
 							<label
 								for="password"
-								class="block mb-2 text-md font-medium text-gray-900 dark:text-white"
+								className="block mb-2 text-md font-medium text-gray-900 dark:text-white"
 							>
 								Price
 							</label>
@@ -177,14 +175,14 @@ const ProductUpdate = ({ product }) => {
 								placeholder={product.price.toFixed(2)}
 								onChange={handleChange}
 								type="number"
-								class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+								className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 								required="true"
 							/>
 						</div>
 						<div>
 							<label
 								for="password"
-								class="block mb-2 text-md font-medium text-gray-900 dark:text-white"
+								className="block mb-2 text-md font-medium text-gray-900 dark:text-white"
 							>
 								Sizes(s) <span className='text-gray-600'>*required</span>
 							</label>
@@ -193,14 +191,14 @@ const ProductUpdate = ({ product }) => {
 								placeholder={product.size}
 								onChange={handleSize}
 								type="text"
-								class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+								className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 								required="true"
 							/>
 						</div>
 						<div>
 							<label
 								for="password"
-								class="block mb-2 text-md font-medium text-gray-900 dark:text-white"
+								className="block mb-2 text-md font-medium text-gray-900 dark:text-white"
 							>
 								Available Color(s) <span className='text-gray-600'>*required</span>
 							</label>
@@ -209,14 +207,14 @@ const ProductUpdate = ({ product }) => {
 								placeholder={product.color}
 								onChange={handleColor}
 								type="text"
-								class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+								className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 								required="true"
 							/>
 						</div>
 						<div>
 							<label
 								for="password"
-								class="block mb-2 text-md font-medium text-gray-900 dark:text-white"
+								className="block mb-2 text-md font-medium text-gray-900 dark:text-white"
 							>
 								Count In Stock
 							</label>
@@ -225,14 +223,14 @@ const ProductUpdate = ({ product }) => {
 								placeholder={product.inStock}
 								onChange={handleChange}
 								type="number"
-								class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+								className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 								required="true"
 							/>
 						</div>
 						<div>
 							<label
 								for="password"
-								class="block mb-2 text-md font-medium text-gray-900 dark:text-white"
+								className="block mb-2 text-md font-medium text-gray-900 dark:text-white"
 							>
 								Rating (1-5)
 							</label>
@@ -241,7 +239,7 @@ const ProductUpdate = ({ product }) => {
 								placeholder={product.rating}
 								onChange={handleChange}
 								type="number"
-								class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+								className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 								required="true"
 							/>
 						</div>
@@ -250,7 +248,7 @@ const ProductUpdate = ({ product }) => {
 							// onClick={handleClick}
 							// disabled={isFetching}
 							onClick={handleUpdate}
-							class="w-full text-white bg-blue-500 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+							className="w-full text-white bg-blue-500 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
 						>
 							UPDATE
 						</button>
@@ -260,9 +258,9 @@ const ProductUpdate = ({ product }) => {
 
 			{/* 2nd card */}
 			<div>
-				<div class="rounded bg-gray-200 dark:bg-gray-800 px-3 py-6">
-					{/* <div class="flex justify-between py-1 text-black dark:text-white">
-						<h3 class="text-sm font-semibold">Tasks in DEVELOPMENT</h3>
+				<div className="rounded bg-gray-200 dark:bg-gray-800 px-3 py-6">
+					{/* <div className="flex justify-between py-1 text-black dark:text-white">
+						<h3 className="text-sm font-semibold">Tasks in DEVELOPMENT</h3>
 					</div> */}
 
 					<div className="flex">
@@ -286,7 +284,7 @@ const ProductUpdate = ({ product }) => {
 						// onClick={handleClick}
 						// disabled={isFetching}
 						onClick={updateImg}
-						class="w-full text-white bg-blue-500 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-6 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+						className="w-full text-white bg-blue-500 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-6 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
 					>
 						UPDATE
 					</button>

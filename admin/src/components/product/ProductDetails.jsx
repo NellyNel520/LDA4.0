@@ -1,9 +1,6 @@
 import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
-import { useSelector } from 'react-redux'
-import { useEffect, useMemo, useState } from 'react'
-import { userRequest } from '../../services/requestMethods'
+
 
 
 const FilterColor = styled.div`
@@ -24,9 +21,9 @@ const FilterSizeOption = styled.option``
 const ProductDetails = ({product}) => {
 	return (
 		<div className="w-full lg:w-[30%] mx-6">
-			<div class="relative flex flex-col min-w-0 mb-4 lg:mb-0  break-words bg-gray-50 dark:bg-gray-800 rounded ">
-				{/* <div class="rounded-t mb-0 px-0 border-0"> */}
-					{/* <div class="block  overflow-x-auto"> */}
+			<div className="relative flex flex-col min-w-0 mb-4 lg:mb-0  break-words bg-gray-50 dark:bg-gray-800 rounded ">
+				{/* <div className="rounded-t mb-0 px-0 border-0"> */}
+					{/* <div className="block  overflow-x-auto"> */}
           <div className="productTopRight rounded  font-play  py-[]">
 							<div className="productInfoTop">
 								<img src={product.img} alt="" className="productInfoImg" />

@@ -13,6 +13,7 @@ import Product from './pages/Product';
 import User from './pages/User';
 import OrderDetails from './pages/Order';
 import NewProduct from './pages/NewProduct';
+import NewUser from './pages/NewUser';
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
       <Route path="/user/:userId" element={<User user={user}/>} />
       <Route path="/order/:orderId" element={<OrderDetails user={user}/>} />
       <Route path="/newProduct" element={<NewProduct user={user}/>} />
+      <Route path="/newUser" element={<NewUser user={user}/>} />
       </Routes>
     </div>
   );
