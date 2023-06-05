@@ -217,9 +217,9 @@ const Cart = () => {
 									<button>CONTINUE SHOPPING</button>
 								</Link>
 							</TopButton>
-							<TopTexts className="text-lg hidden md:flex">
+							<TopTexts className="text-lg hidden md:flex hover:text-blue-500">
 								<TopText>Cart({cart.quantity})</TopText>
-								<TopText> Wishlist(12)</TopText>
+								{/* <TopText> Wishlist(12)</TopText> */}
 							</TopTexts>
 
 							<StripeCheckout

@@ -36,7 +36,7 @@ const Login = () => {
 									for="email"
 									className="block mb-2 text-md font-medium text-gray-900 dark:text-white"
 								>
-									Your email
+									Email
 								</label>
 								<input
 									type="email"
@@ -69,7 +69,7 @@ const Login = () => {
 							<button
 								onClick={handleClick}
 								disabled={isFetching}
-								className="w-full text-white bg-blue-500 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+								className="w-full text-white bg-blue-500 hover:bg-white hover:text-blue-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
 							>
 								Login
 							</button>
