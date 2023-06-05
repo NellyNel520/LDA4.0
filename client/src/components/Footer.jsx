@@ -40,18 +40,18 @@ const Footer = () => {
 											Products
 										</a>
 									</li> 
-									<li className="mb-2">
-										<a href="/" className=" hover:text-blue-500">
+									{/* <li className="mb-2">
+										<a href="/profile" className=" hover:text-blue-500">
 											My Account
 										</a>
-									</li>
+									</li> */}
                   <li className="mb-2">
 										<a href="/" className=" hover:text-blue-500">
 											Home
 										</a>
 									</li>
                   <li className="mb-2">
-										<a href="/" className=" hover:text-blue-500">
+										<a href="/about" className=" hover:text-blue-500">
 											About
 										</a>
 									</li>
