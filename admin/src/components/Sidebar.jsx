@@ -21,8 +21,8 @@ export default function Sidebar() {
 							</div>
 						</li>
 						<li>
-							<a
-								href="/home"
+							<Link
+								to={'/home'}
 								className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
 							>
 								<span className="inline-flex justify-center items-center ml-4">
@@ -44,7 +44,7 @@ export default function Sidebar() {
 								<span className="ml-2 text-sm tracking-wide truncate">
 									Dashboard
 								</span>
-							</a>
+							</Link>
 						</li>
 						<li>
 							<Link
@@ -54,9 +54,9 @@ export default function Sidebar() {
 								<span className="inline-flex justify-center items-center ml-4">
 									<StorefrontIcon />
 								</span>
-                <span className='ml-2 text-sm tracking-wide truncate'>
-                Products
-                </span>
+								<span className="ml-2 text-sm tracking-wide truncate">
+									Products
+								</span>
 							</Link>
 						</li>
 						<li>
@@ -67,14 +67,13 @@ export default function Sidebar() {
 								<span className="inline-flex justify-center items-center ml-4">
 									<PermIdentityIcon />
 								</span>
-                <span className='ml-2 text-sm tracking-wide truncate'>
-                Users
-                </span>
+								<span className="ml-2 text-sm tracking-wide truncate">
+									Users
+								</span>
 							</Link>
 						</li>
 
-            
-            <li>
+						<li>
 							<Link
 								to={'/orders'}
 								className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
@@ -82,12 +81,12 @@ export default function Sidebar() {
 								<span className="inline-flex justify-center items-center ml-4">
 									<AttachMoneyIcon />
 								</span>
-                <span className='ml-2 text-sm tracking-wide truncate'>
-                Transactions
-                </span>
+								<span className="ml-2 text-sm tracking-wide truncate">
+									Transactions
+								</span>
 							</Link>
 						</li>
-            <li>
+						<li>
 							<Link
 								to={'/newProduct'}
 								className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
@@ -95,12 +94,12 @@ export default function Sidebar() {
 								<span className="inline-flex justify-center items-center ml-4">
 									<AddCircleOutlineIcon />
 								</span>
-                <span className='ml-2 text-sm tracking-wide truncate'>
-                New Product
-                </span>
+								<span className="ml-2 text-sm tracking-wide truncate">
+									New Product
+								</span>
 							</Link>
 						</li>
-            <li>
+						<li>
 							<Link
 								to={'/newUser'}
 								className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
@@ -108,12 +107,12 @@ export default function Sidebar() {
 								<span className="inline-flex justify-center items-center ml-4">
 									<AddCircleOutlineIcon />
 								</span>
-                <span className='ml-2 text-sm tracking-wide truncate'>
-                New User
-                </span>
+								<span className="ml-2 text-sm tracking-wide truncate">
+									New User
+								</span>
 							</Link>
 						</li>
-            <li>
+						<li>
 							<Link
 								to={'/home'}
 								className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
@@ -121,12 +120,12 @@ export default function Sidebar() {
 								<span className="inline-flex justify-center items-center ml-4">
 									<BarChartIcon />
 								</span>
-                <span className='ml-2 text-sm tracking-wide truncate'>
-                Reports
-                </span>
+								<span className="ml-2 text-sm tracking-wide truncate">
+									Reports
+								</span>
 							</Link>
 						</li>
-            <li>
+						<li>
 							<Link
 								to={'/home'}
 								className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
@@ -134,13 +133,12 @@ export default function Sidebar() {
 								<span className="inline-flex justify-center items-center ml-4">
 									<TrendingUpIcon />
 								</span>
-                <span className='ml-2 text-sm tracking-wide truncate'>
-                Sales Analytics
-                </span>
+								<span className="ml-2 text-sm tracking-wide truncate">
+									Sales Analytics
+								</span>
 							</Link>
 						</li>
-						
-					
+
 						<li>
 							<a
 								href="#"
@@ -224,7 +222,9 @@ export default function Sidebar() {
 										></path>
 									</svg>
 								</span>
-								<span className="ml-2 text-sm tracking-wide truncate">Profile</span>
+								<span className="ml-2 text-sm tracking-wide truncate">
+									Profile
+								</span>
 							</a>
 						</li>
 						<li>
