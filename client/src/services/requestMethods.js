@@ -1,6 +1,6 @@
 import Axios from 'axios'
 
-export const BASE_URL = 'https://lda-backend.onrender.com/api' 
+export const BASE_URL = 'https://lda-api-8kdk.onrender.com/api' 
 
 const user = JSON.parse(localStorage.getItem('persist:root'))?.user
 const currentUser = user && JSON.parse(user).currentUser
