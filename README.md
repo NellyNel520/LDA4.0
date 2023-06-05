@@ -11,6 +11,16 @@ This project is a full-stack E-commerce application built using the M.E.R.N (Mon
 
 The main goal of this project is to provide a robust and scalable E-commerce solution with a user-friendly interface and efficient management capabilities for administrators.
 
+
+##### ***Deployment***
+The E-commerce App itself was deployed and can be viewed [here](https://londondiorapparel-4-0.onrender.com )
+
+The Admin Dashboard was deployed and can be view [here](https://admin-lda4-0.onrender.com/)
+
+* Admin dashboard is restricted to admin users only. In order to view the applications complete functionality, use the login info below
+    * Email: admin@email.com
+    * Password: 1234
+
 ***
 
 #### ***Technologies Used*** 
