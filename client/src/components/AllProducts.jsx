@@ -14,9 +14,9 @@ const AllProducts = ({category, filters, sort}) => {
     const getProducts = async () => {
       try {
         const res = await axios.get(
-          // category
-          //   ? `${BASE_URL}/products/?category=${category}`
-             `${BASE_URL}/products`
+          category
+            ? `${BASE_URL}/products/?category=${category}`
+            :  `${BASE_URL}/products`
         );
         console.log(res)
         setProducts(res.data);
