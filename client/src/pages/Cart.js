@@ -181,7 +181,7 @@ const Cart = () => {
 		const makeRequest = async () => {
 			try {
 				const response = await axios.post(
-					'http://localhost:3001/api/checkout/payment',
+					'https://lda-api-8kdk.onrender.com/api/checkout/payment',
 					{
 						tokenId: stripeToken.id,
 						amount: cart.total * 100,
