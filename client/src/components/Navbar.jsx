@@ -27,8 +27,15 @@ const Navbar = ({ user, handleLogOut }) => {
 				<div className="md:flex items-center justify-between bg-black text-blue-400 py-4 md:px-10 px-7">
 					<div
 						className="font-bold text-2xl cursor-pointer flex items-center font-ari
+						
 	    "
 					>
+					<span className="w-[3rem]  ">
+						<img
+							src="https://i.postimg.cc/5tQscMm2/LDA-Logo-Blue1.png"
+							alt="logo"
+						/>
+					</span>
 						London Dior Apparel
 					</div>
 
@@ -101,6 +108,12 @@ const Navbar = ({ user, handleLogOut }) => {
 					className="font-bold text-2xl cursor-pointer flex items-center font-ari
 	    "
 				>
+				<span className="w-[3rem]  ">
+						<img
+							src="https://i.postimg.cc/5tQscMm2/LDA-Logo-Blue1.png"
+							alt="logo"
+						/>
+					</span>
 					London Dior Apparel
 				</div>
 

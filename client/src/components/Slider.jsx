@@ -8,13 +8,13 @@ import CircleIcon from '@mui/icons-material/Circle';
 const Slider = () => {
   const slides = [
     {
-      url: 'https://i.postimg.cc/6pTZSp5D/1.png',
-    },
-    {
       url: 'https://i.postimg.cc/rppyg6X7/tee-mockup-of-a-trendy-girl-lying-on-the-grass-a11736.png',
     },
     {
       url: 'https://i.postimg.cc/nzZjnR6k/t-shirt-mockup-featuring-a-man-with-sunglasses-at-a-vintage-records-store-30452.png',
+    },
+    {
+      url: 'https://i.postimg.cc/6pTZSp5D/1.png',
     },
 
     {
