@@ -7,7 +7,7 @@
 ***
 
 #### ***Description***
-This project is a full-stack E-commerce application built using the M.E.R.N (MongoDB, Express.js, React.js, Node.js) stack. It includes an admin dashboard for easy management of the E-commerce platform. The app incorporates various technologies and features such as React, Redux Toolkit, Firebase image upload, JWT authentication, and route protection for both admin and users.
+This project is a full-stack E-commerce application built using the M.E.R.N (MongoDB, Express.js, React.js, Node.js) stack. It includes an admin dashboard for easy management of the E-commerce platform. The app incorporates various technologies and features such as React, Redux Toolkit, Firebase image upload, JWT authentication, and route protection for both admin and users. It also mobile friendly and incorporates a responsive web design.
 
 The main goal of this project is to provide a robust and scalable E-commerce solution with a user-friendly interface and efficient management capabilities for administrators.
 
