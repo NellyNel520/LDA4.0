@@ -71,7 +71,7 @@ const ProductUpdate = ({ product }) => {
 			() => {
 				// Handle successful uploads on complete
 				// For instance, get the download URL: https://firebasestorage.googleapis.com/...
-				getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+				getDownloadURL(uploadTask.snapshot.ref).then(async(downloadURL) => {
 					console.log('File available at', downloadURL)
 					const product = {
 						img: downloadURL,

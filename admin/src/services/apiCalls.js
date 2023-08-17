@@ -23,9 +23,7 @@ import {getCustomerStart,
   updateCustomerStart,
   updateCustomerSuccess,
   updateCustomerFailure,
-  addCustomerStart,
-  addCustomerSuccess,
-  addCustomerFailure, } from "../redux/customerRedux"
+   } from "../redux/customerRedux"
 import {getOrderStart,
   getOrderSuccess,
   getOrderFailure,
@@ -35,9 +33,7 @@ import {getOrderStart,
   updateOrderStart,
   updateOrderSuccess,
   updateOrderFailure,
-  addOrderStart,
-  addOrderSuccess,
-  addOrderFailure,} from "../redux/orderRedux"
+  } from "../redux/orderRedux"
 
 export const login = async (dispatch, user) => {
 	dispatch(loginStart())
@@ -68,6 +64,7 @@ export const registerUser = async (data) => {
 //   }
 // };
 
+// doesnt work
 export const addProduct = async (product, dispatch) => {
   dispatch(addProductStart());
   try {
@@ -76,7 +73,12 @@ export const addProduct = async (product, dispatch) => {
   } catch (err) {
     dispatch(addProductFailure());
   }
-};
+}; 
+
+
+
+
+
 
 export const getProducts = async (dispatch) => {
   dispatch(getProductStart());
@@ -186,4 +188,8 @@ export const updateOrder = async (id, order, dispatch) => {
     dispatch(updateOrderFailure());
   }
 };
+
+// export const updateOrder  = async (id, order) => {
+//   await userRequest.put(`/orders/${id}`, order)
+// }
 

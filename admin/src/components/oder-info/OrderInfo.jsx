@@ -1,10 +1,11 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { useDispatch } from 'react-redux'
+// import { useDispatch } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 import { useState } from 'react'
-import { updateOrder} from '../../services/apiCalls'
+// import { updateOrder} from '../../services/apiCalls'
 import { useNavigate } from 'react-router'
+import {  userRequest } from '../../services/requestMethods'
 
 const OrderInfo = () => {
 	const location = useLocation()
@@ -12,7 +13,7 @@ const OrderInfo = () => {
 	const [status, setStatus] = useState('')
 	// const [order, setOrder] = useState({})
 
-	const dispatch = useDispatch()
+	// const dispatch = useDispatch()
 	let navigate = useNavigate()
 
 	const order = useSelector((state) =>
@@ -20,22 +21,33 @@ const OrderInfo = () => {
 	)
 	console.log(order)
 
-	const Button = ({ type }) => {
-		return <button className={'orderStatusButton ' + type}>{type}</button>
-	}
+	// const Button = ({ type }) => {
+	// 	return <button className={'orderStatusButton ' + type}>{type}</button>
+	// }
 
 	const handleChange = (e) => {
 		setStatus((prev) => {
 			return { ...prev, [e.target.name]: e.target.value }
 		})
 	}
+ 
+	// Update function
+	// const handleUpdate = (e) => {
+	// 	e.preventDefault()
+	// 	const order = {
+	// 		...status,
+	// 	}
+	// 	updateOrder(id, order, dispatch)
+	// 	navigate('/orders')
+	// 	navigate(0)
+	// }
 
-	const handleUpdate = (e) => {
+	const handleUpdate = async (e) => {
 		e.preventDefault()
 		const order = {
 			...status,
 		}
-		updateOrder(id, order, dispatch)
+		await userRequest.put(`/orders/${id}`, order)
 		navigate('/orders')
 		navigate(0)
 	}
