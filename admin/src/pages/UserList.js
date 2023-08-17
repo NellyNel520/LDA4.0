@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
 import { useDispatch, useSelector } from 'react-redux'
@@ -12,12 +12,16 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import moment from 'moment'
 import { userRequest } from '../services/requestMethods'
 import { useNavigate } from 'react-router'
-
+import { getUsers } from '../services/apiCalls'
 
 const UserList = ({ user }) => {
 	const dispatch = useDispatch()
 	let navigate = useNavigate()
 	const users = useSelector((state) => state.customer.users)
+
+	useEffect(() => {
+		getUsers(dispatch)
+	}, [dispatch])
 
 	// useEffect(() => {
 	// 	getUsers(dispatch)
@@ -77,21 +81,6 @@ const UserList = ({ user }) => {
 				)
 			},
 		},
-		{
-			field: 'phoneNumber',
-			headerName: 'Phone Number',
-			width: 200,
-			renderCell: (params) => {
-				return (
-					<div className="text-white text-md">{params.row.phoneNumber}</div>
-				)
-			},
-		},
-		// {
-		//   field: "transaction",
-		//   headerName: "Transaction Volume",
-		//   width: 160,
-		// },
 		{
 			field: 'action',
 			headerName: 'Action',
