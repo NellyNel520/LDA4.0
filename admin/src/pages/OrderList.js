@@ -9,17 +9,15 @@ import { Link } from 'react-router-dom'
 import '../styles/orderList.css'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import { getOrders, deleteOrder } from '../services/apiCalls'
-import TimeAgo from 'javascript-time-ago'
-import en from 'javascript-time-ago/locale/en'
+import { format } from 'timeago.js'
+import moment from 'moment'
+import { userRequest } from '../services/requestMethods'
+import { useNavigate } from 'react-router'
 
 const OrderList = ({ user }) => {
 	const dispatch = useDispatch()
 	const orders = useSelector((state) => state.order.orders)
-
-	// TimeAgo.addDefaultLocale(en)
-
-// Create formatter (English).
-// const timeAgo = new TimeAgo('en-US')
+	let navigate = useNavigate()
 
 	const Button = ({ type }) => {
 		return <button className={'orderStatusButton ' + type}>{type}</button>
@@ -29,8 +27,14 @@ const OrderList = ({ user }) => {
 		getOrders(dispatch)
 	}, [dispatch])
 
-	const handleDelete = (id) => {
-		deleteOrder(id, dispatch)
+	// ***Previous Delete function with redux***
+	// const handleDelete = (id) => {
+	// 	deleteOrder(id, dispatch)
+	// }
+
+	const handleDelete = async (id) => {
+		await userRequest.delete(`/orders/${id}`)
+		navigate(0)
 	}
 
 	const columns = [
@@ -74,11 +78,14 @@ const OrderList = ({ user }) => {
 		{
 			field: 'createdAt',
 			headerName: 'Date',
-			width: 200,
+			width: 280,
 			renderCell: (params) => {
 				return (
 					<div className="text-white font-play text-lg">
-						{/* {timeAgo.format(params.row.createdAt)} */}
+						{moment(params.row.createdAt).format('MMM DD, YYYY')}
+						<span className="ml-2 text-sm text-gray-400">
+							({format(params.row.createdAt)})
+						</span>
 					</div>
 				)
 			},
@@ -117,6 +124,7 @@ const OrderList = ({ user }) => {
 						<Link to={'/order/' + params.row._id}>
 							<button className="productListEdit">Edit</button>
 						</Link>
+
 						<DeleteOutlineIcon
 							className="userListDelete"
 							onClick={() => handleDelete(params.row._id)}

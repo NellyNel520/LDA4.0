@@ -13,9 +13,10 @@ import { useState } from 'react'
 import { updateUser } from '../services/apiCalls'
 import { useNavigate } from 'react-router'
 import '../styles/user.css'
+import { userRequest } from '../services/requestMethods'
 
 const UserInfo = () => {
-	const location = useLocation()
+	const location = useLocation() 
 	const id = location.pathname.split('/')[2]
 	const [inputs, setInputs] = useState({})
 	const dispatch = useDispatch()
@@ -30,13 +31,22 @@ const UserInfo = () => {
 			return { ...prev, [e.target.name]: e.target.value }
 		})
 	}
-
-	const handleUpdate = (e) => {
+	// ***Previous Update function***
+	// const handleUpdate = (e) => {
+	// 	e.preventDefault()
+	// 	const customer = {
+	// 		...inputs,
+	// 	}
+	// 	updateUser(id, customer, dispatch)
+	// 	navigate('/users')
+	// 	navigate(0)
+	// }
+	const handleUpdate = async (e) => {
 		e.preventDefault()
 		const customer = {
 			...inputs,
 		}
-		updateUser(id, customer, dispatch)
+		await userRequest.put(`/users/${id}`, customer)
 		navigate('/users')
 		navigate(0)
 	}
@@ -113,7 +123,7 @@ const UserInfo = () => {
 											Phone Number:
 										</span>
 									</span>
-									<span className="userShowInfoTitle">+1 123 456 67</span>
+									<span className="userShowInfoTitle">{user.phoneNumber}</span>
 								</div>
 								<div className="userShowInfo justify-between md:flex">
 									<span className="flex">
@@ -234,7 +244,7 @@ const UserInfo = () => {
 									name="address"
 									placeholder={user.address}
 									onChange={handleChange}
-									type="number"
+									type="text"
 									class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 									required="true"
 								/>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 // import { useDispatch } from 'react-redux'
 import { useLocation } from 'react-router-dom'
@@ -11,6 +11,7 @@ const OrderInfo = () => {
 	const location = useLocation()
 	const id = location.pathname.split('/')[2]
 	const [status, setStatus] = useState('')
+	const [name, setName ] = useState('')
 	// const [order, setOrder] = useState({})
 
 	// const dispatch = useDispatch()
@@ -21,9 +22,19 @@ const OrderInfo = () => {
 	)
 	console.log(order)
 
-	// const Button = ({ type }) => {
-	// 	return <button className={'orderStatusButton ' + type}>{type}</button>
-	// }
+	useEffect(() => {
+		const getCustomerName =  async () => {
+		try {
+			const res = await userRequest.get(`/users/find/${order.userId}`)
+			setName(res.data.name)
+		} catch {}
+		}
+		getCustomerName()
+	}, [])
+
+	
+	
+
 
 	const handleChange = (e) => {
 		setStatus((prev) => {
@@ -31,7 +42,7 @@ const OrderInfo = () => {
 		})
 	}
  
-	// Update function
+	// ***Previous Update function***
 	// const handleUpdate = (e) => {
 	// 	e.preventDefault()
 	// 	const order = {
@@ -108,6 +119,14 @@ const OrderInfo = () => {
 						
 							<div className="text-md md:text-xl font-play p-2">
 								<div className="orderShowInfo ">
+									Name:
+									<span className="orderShowInfoTitle ">
+										{' '}
+										{name}
+									</span>
+									
+								</div>
+								<div className="mt-[]">
 									Address:
 									<span className="orderShowInfoTitle ">
 										{' '}

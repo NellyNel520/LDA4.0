@@ -9,17 +9,28 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import '../styles/userList.css'
 import { deleteUser } from '../services/apiCalls'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+import moment from 'moment'
+import { userRequest } from '../services/requestMethods'
+import { useNavigate } from 'react-router'
+
 
 const UserList = ({ user }) => {
 	const dispatch = useDispatch()
+	let navigate = useNavigate()
 	const users = useSelector((state) => state.customer.users)
 
 	// useEffect(() => {
 	// 	getUsers(dispatch)
 	// }, [dispatch])
 
-	const handleDelete = (id) => {
-		deleteUser(id, dispatch)
+	// ***Previous Delete function with redux***
+	// const handleDelete = (id) => {
+	// 	deleteUser(id, dispatch)
+	// }
+
+	const handleDelete = async (id) => {
+		await userRequest.delete(`/users/${id}`)
+		navigate(0)
 	}
 
 	const columns = [
@@ -52,6 +63,18 @@ const UserList = ({ user }) => {
 			width: 250,
 			renderCell: (params) => {
 				return <div className="text-white font-play">{params.row.email}</div>
+			},
+		},
+		{
+			field: 'dateJoined',
+			headerName: 'Date Joined',
+			width: 200,
+			renderCell: (params) => {
+				return (
+					<div className="text-white text-md">
+						{moment(params.row.createdAt).format('MMM DD, YYYY')}
+					</div>
+				)
 			},
 		},
 		{
