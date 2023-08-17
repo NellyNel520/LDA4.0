@@ -6,7 +6,7 @@ const {
 	verifyTokenAndAdmin,
 } = require('../controllers/VerifyToken')
 
-router.put('/:id', verifyToken, controller.updateUser)
+router.put('/:id', verifyTokenAndAuthorization, controller.updateUser)
 router.delete('/:id', verifyTokenAndAdmin, controller.deleteUser)
 router.get('/find/:id', verifyTokenAndAdmin, controller.getUserById)
 router.get('/', verifyTokenAndAdmin, controller.getAllUsers)
