@@ -1,16 +1,25 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { userRequest } from '../../../services/requestMethods'
-import { format } from 'timeago.js'
+import TimeAgo from 'javascript-time-ago'
+import en from 'javascript-time-ago/locale/en'
 import { useDispatch, useSelector } from 'react-redux'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
 import '../../../styles/orderList.css'
 
 
+
+
 const RecentOrders = () => {
 	const [orders, setOrders] = useState([])
 	const users = useSelector((state) => state.customer.users)
+
+
+TimeAgo.addDefaultLocale(en)
+
+// Create formatter (English).
+const timeAgo = new TimeAgo('en-US')
 
 	useEffect(() => {
 		const getOrders = async () => {
@@ -66,7 +75,7 @@ const RecentOrders = () => {
 										<td className="px-4 py-3 text-sm">
 											{moment(order.createdAt).format('MMM DD, YYYY')}
 											<span className="pl-3 text-gray-600">
-												({format(order.createdAt)})
+												({timeAgo.format(order.createdAt)})
 											</span>{' '}
 										</td>
 										<td className="px-4 py-3 text-sm">{order._id}</td>

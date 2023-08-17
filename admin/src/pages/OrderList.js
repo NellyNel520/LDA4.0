@@ -9,11 +9,17 @@ import { Link } from 'react-router-dom'
 import '../styles/orderList.css'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import { getOrders, deleteOrder } from '../services/apiCalls'
-import { format } from 'timeago.js'
+import TimeAgo from 'javascript-time-ago'
+import en from 'javascript-time-ago/locale/en'
 
 const OrderList = ({ user }) => {
 	const dispatch = useDispatch()
 	const orders = useSelector((state) => state.order.orders)
+
+	TimeAgo.addDefaultLocale(en)
+
+// Create formatter (English).
+const timeAgo = new TimeAgo('en-US')
 
 	const Button = ({ type }) => {
 		return <button className={'orderStatusButton ' + type}>{type}</button>
@@ -72,7 +78,7 @@ const OrderList = ({ user }) => {
 			renderCell: (params) => {
 				return (
 					<div className="text-white font-play text-lg">
-						{format(params.row.createdAt)}
+						{timeAgo.format(params.row.createdAt)}
 					</div>
 				)
 			},
