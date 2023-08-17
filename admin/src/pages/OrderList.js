@@ -16,10 +16,10 @@ const OrderList = ({ user }) => {
 	const dispatch = useDispatch()
 	const orders = useSelector((state) => state.order.orders)
 
-	TimeAgo.addDefaultLocale(en)
+	// TimeAgo.addDefaultLocale(en)
 
 // Create formatter (English).
-const timeAgo = new TimeAgo('en-US')
+// const timeAgo = new TimeAgo('en-US')
 
 	const Button = ({ type }) => {
 		return <button className={'orderStatusButton ' + type}>{type}</button>
@@ -78,7 +78,7 @@ const timeAgo = new TimeAgo('en-US')
 			renderCell: (params) => {
 				return (
 					<div className="text-white font-play text-lg">
-						{timeAgo.format(params.row.createdAt)}
+						{/* {timeAgo.format(params.row.createdAt)} */}
 					</div>
 				)
 			},
