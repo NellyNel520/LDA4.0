@@ -22,8 +22,7 @@ const ProductDetails = ({product}) => {
 	return (
 		<div className="w-full lg:w-[30%] mx-6">
 			<div className="relative flex flex-col min-w-0 mb-4 lg:mb-0  break-words bg-gray-50 dark:bg-gray-800 rounded ">
-				{/* <div className="rounded-t mb-0 px-0 border-0"> */}
-					{/* <div className="block  overflow-x-auto"> */}
+				
           <div className="productTopRight rounded  font-play  py-[]">
 							<div className="productInfoTop">
 								<img src={product.img} alt="" className="productInfoImg" />
@@ -42,7 +41,7 @@ const ProductDetails = ({product}) => {
 										<div key={category}>{category}</div>
 									))}
 
-									{/* <span className="productInfoValue">{product.categories}</span> */}
+									
 								</div>
 								<div className="productInfoItem">
 									<span className="productInfoKey">Count In Stock:</span>
@@ -58,7 +57,7 @@ const ProductDetails = ({product}) => {
 										<FilterColor color={c} key={c} />
 									))}
 
-									{/* <span className="productInfoValue">5123</span> */}
+									
 								</div>
 								<div className="productInfoItem">
 									<span className="productInfoKey">Size(s):</span>
@@ -68,8 +67,7 @@ const ProductDetails = ({product}) => {
 								</div>
 							</div>
 						</div>
-          {/* </div> */}
-				{/* </div> */}
+  
 			</div>
 		</div>
 	)

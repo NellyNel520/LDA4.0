@@ -9,17 +9,28 @@ import { DataGrid } from '@mui/x-data-grid'
 import { Link } from 'react-router-dom'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import '../styles/productList.css'
+import { userRequest } from '../services/requestMethods'
+import { useNavigate } from 'react-router'
+
 
 const ProductList = ({ user }) => {
 	const dispatch = useDispatch()
 	const products = useSelector((state) => state.product.products)
+	let navigate = useNavigate()
 
 	useEffect(() => {
 		getProducts(dispatch)
 	}, [dispatch])
+ 
 
-	const handleDelete = (id) => {
-		deleteProduct(id, dispatch)
+	// ***Previous Delete function with redux***
+	// const handleDelete = (id) => {
+	// 	deleteProduct(id, dispatch)
+	// }
+
+	const handleDelete = async (id) => {
+		await userRequest.delete(`/products/${id}`)
+		navigate(0)
 	}
 
 	const columns = [

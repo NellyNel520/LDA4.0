@@ -13,7 +13,7 @@ const NewProduct = ({user}) => {
 				</div>
 
         <div className='h-[100vh] w-full '>
-          {/* <h1 className='text-white'>New Product </h1> */}
+          
           <NewProductForm />
 
         </div>

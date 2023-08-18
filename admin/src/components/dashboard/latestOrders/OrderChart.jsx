@@ -1,5 +1,5 @@
 import React from 'react'
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useEffect, useMemo, useState } from 'react'
 import { userRequest } from '../../../services/requestMethods'
 
@@ -41,7 +41,6 @@ const OrderChart = () => {
 			} catch {}
 		}
 		getStats()
-		// console.log(orderStats)
 	}, [MONTHS])
 
   return (

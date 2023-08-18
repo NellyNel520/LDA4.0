@@ -1,7 +1,7 @@
 import React from 'react'
 import { userRequest } from '../services/requestMethods'
 import { useEffect, useState } from 'react'
-// import OrderProducts from './OrderProducts'
+
 import { useSelector, useDispatch } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 import { useNavigate } from 'react-router'
@@ -41,7 +41,7 @@ const UserOrderHistory = ({ customer }) => {
 
 			{orders.length > 0 ? (
 				<div className="p-4 bg-blue-50 dark:bg-gray-800 dark:text-gray-50 border border-blue-500 dark:border-gray-500 rounded-lg shadow-md">
-					{/* <h4 className="text-lg font-semibold"></h4> */}
+				
 					{orders.slice(0, 60).map((order) => (
 						<div className="mb-10">
 							<div className="order rounded ">

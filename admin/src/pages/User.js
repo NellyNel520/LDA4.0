@@ -12,10 +12,10 @@ import { useLocation } from 'react-router-dom'
 const User = ({user}) => {
   const location = useLocation()
 	const id = location.pathname.split('/')[2]
-	// const [inputs, setInputs] = useState({})
+	
 	const dispatch = useDispatch()
-	// let navigate = useNavigate()
-// 
+
+
 	const customer = useSelector((state) =>
 		state.customer.users.find((user) => user._id === id)
 	)

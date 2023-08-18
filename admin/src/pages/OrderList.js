@@ -23,7 +23,7 @@ const OrderList = ({ user }) => {
 		return <button className={'orderStatusButton ' + type}>{type}</button>
 	}
 
-	useEffect(() => {
+	useEffect(() => { 
 		getOrders(dispatch)
 	}, [dispatch])
 

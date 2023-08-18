@@ -1,18 +1,14 @@
 import React from 'react'
 import { useState } from 'react'
-import {
-	getStorage,
-	ref,
-	uploadBytesResumable,
-	getDownloadURL,
-} from 'firebase/storage'
-import app from '../../firebase'
+import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
+import { storage } from '../../firebase'
 import { useDispatch } from 'react-redux'
-import { updateProduct } from '../../services/apiCalls'
 import { useNavigate } from 'react-router'
+import { userRequest } from '../../services/requestMethods'
 
 const ProductUpdate = ({ product }) => {
 	let navigate = useNavigate()
+	const [err, setErr] = useState(false)
 	const [inputs, setInputs] = useState({})
 	const [file, setFile] = useState(null)
 	const [color, setColor] = useState([])
@@ -37,22 +33,15 @@ const ProductUpdate = ({ product }) => {
 		setSize(e.target.value.split(','))
 	}
 
-	const updateImg = (e) => {
+	const updateImg = async (e) => {
 		e.preventDefault()
-		const fileName = new Date().getTime() + file.name
-		const storage = getStorage(app)
-		const storageRef = ref(storage, fileName)
+		const date = new Date().getTime()
+		const storageRef = ref(storage, `${file.name + date}`)
 		const uploadTask = uploadBytesResumable(storageRef, file)
 
-		// Register three observers:
-		// 1. 'state_changed' observer, called any time the state changes
-		// 2. Error observer, called on failure
-		// 3. Completion observer, called on successful completion
 		uploadTask.on(
 			'state_changed',
 			(snapshot) => {
-				// Observe state change events such as progress, pause, and resume
-				// Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
 				const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
 				console.log('Upload is ' + progress + '% done')
 				switch (snapshot.state) {
@@ -66,18 +55,17 @@ const ProductUpdate = ({ product }) => {
 				}
 			},
 			(error) => {
-				// Handle unsuccessful uploads
+				setErr(true)
 			},
 			() => {
-				// Handle successful uploads on complete
-				// For instance, get the download URL: https://firebasestorage.googleapis.com/...
-				getDownloadURL(uploadTask.snapshot.ref).then(async(downloadURL) => {
+				getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
 					console.log('File available at', downloadURL)
 					const product = {
 						img: downloadURL,
 					}
 					console.log(product)
-					updateProduct(id, product, dispatch)
+
+					await userRequest.put(`/products/${id}`, product)
 					navigate('/products')
 					navigate(0)
 				})
@@ -85,7 +73,7 @@ const ProductUpdate = ({ product }) => {
 		)
 	}
 
-	const handleUpdate = (e) => {
+	const handleUpdate = async (e) => {
 		e.preventDefault()
 		const product = {
 			...inputs,
@@ -93,11 +81,12 @@ const ProductUpdate = ({ product }) => {
 			color: color,
 		}
 		console.log(product)
-		updateProduct(id, product, dispatch)
+
+		await userRequest.put(`/products/${id}`, product)
 		navigate('/products')
 		navigate(0)
 	}
- 
+
 	return (
 		<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 p-4 gap-4 text-black dark:text-white">
 			<div className="md:col-span-2 xl:col-span-3">
@@ -105,7 +94,6 @@ const ProductUpdate = ({ product }) => {
 					Update Product
 				</h3>
 			</div>
-      
 
 			{/* 1st card */}
 			<div className="md:col-span-2 xl:col-span-1">
@@ -184,7 +172,7 @@ const ProductUpdate = ({ product }) => {
 								for="password"
 								className="block mb-2 text-md font-medium text-gray-900 dark:text-white"
 							>
-								Sizes(s) <span className='text-gray-600'>*required</span>
+								Sizes(s) <span className="text-gray-600">*required</span>
 							</label>
 							<input
 								name="size"
@@ -200,7 +188,8 @@ const ProductUpdate = ({ product }) => {
 								for="password"
 								className="block mb-2 text-md font-medium text-gray-900 dark:text-white"
 							>
-								Available Color(s) <span className='text-gray-600'>*required</span>
+								Available Color(s){' '}
+								<span className="text-gray-600">*required</span>
 							</label>
 							<input
 								name="color"
@@ -245,8 +234,6 @@ const ProductUpdate = ({ product }) => {
 						</div>
 
 						<button
-							// onClick={handleClick}
-							// disabled={isFetching}
 							onClick={handleUpdate}
 							className="w-full text-white bg-blue-500 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
 						>
@@ -259,10 +246,6 @@ const ProductUpdate = ({ product }) => {
 			{/* 2nd card */}
 			<div>
 				<div className="rounded bg-gray-200 dark:bg-gray-800 px-3 py-6">
-					{/* <div className="flex justify-between py-1 text-black dark:text-white">
-						<h3 className="text-sm font-semibold">Tasks in DEVELOPMENT</h3>
-					</div> */}
-
 					<div className="flex">
 						<form className="m">
 							<label className=" text-xl font-play" for="file">
@@ -281,13 +264,12 @@ const ProductUpdate = ({ product }) => {
 						</div>
 					</div>
 					<button
-						// onClick={handleClick}
-						// disabled={isFetching}
 						onClick={updateImg}
 						className="w-full text-white bg-blue-500 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-6 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
 					>
 						UPDATE
 					</button>
+					{err && <span>Something went wrong</span>}
 				</div>
 			</div>
 		</div>

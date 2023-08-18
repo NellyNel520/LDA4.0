@@ -8,9 +8,9 @@ import { Link, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import ProductDetails from '../components/product/ProductDetails'
 import ProductUpdate from '../components/product/ProductUpdate'
-import { deleteProduct } from '../services/apiCalls'
 import { useNavigate } from 'react-router'
-// import ProductUpdate from '../../components/updateProduct/ProductUpdate'
+import { userRequest } from '../services/requestMethods'
+
 
 const FilterColor = styled.div`
 	width: 20px;
@@ -39,8 +39,13 @@ const Product = ({ user }) => {
 		state.product.products.find((product) => product._id === productId)
 	)
 
-	const handleDelete = (id) => {
-		deleteProduct(id, dispatch)
+	// const handleDelete = (id) => {
+	// 	deleteProduct(id, dispatch) 
+	// 	navigate('/products')
+	// }
+
+	const handleDelete = async (id) => {
+		await userRequest.delete(`/products/${id}`)
 		navigate('/products')
 	}
 

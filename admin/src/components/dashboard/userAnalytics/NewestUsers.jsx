@@ -17,7 +17,7 @@ const NewestUsers = () => {
 			} catch {}
 		}
 		getUsers()
-		// console.log(users)
+	
 	}, [])
 
 	return (
@@ -74,7 +74,7 @@ const NewestUsers = () => {
 										{user.email}
 									</td>
 									<td className="border-t-0 align-middle border-l-0 border-r-0 justify-end text-xs whitespace-nowrap p-">
-										{/* <div className="flex items-center">button */}
+								
 
 										<Link to={`/user/${user._id}`}>
 											<button className="widgetSmButton p-1 bg-[#eeeef7] hover:bg-blue-400 hover:text-white">
@@ -85,7 +85,6 @@ const NewestUsers = () => {
 											</button>
 										</Link>
 
-										{/* </div> */}
 									</td>
 								</tr>
 							))}

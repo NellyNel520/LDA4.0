@@ -1,5 +1,4 @@
-import React from 'react'
-import { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { userRequest } from '../../../services/requestMethods'
 import { useDispatch, useSelector } from 'react-redux'
 import { getOrders, getUsers } from '../../../services/apiCalls'
@@ -49,7 +48,6 @@ const TotalOrders = () => {
 			} catch {}
 		}
 		getStats()
-	
 	}, [MONTHS])
 
 	return (
@@ -76,10 +74,10 @@ const TotalOrders = () => {
 					</svg>
 				</div>
 			</div>
-			<div className='text-2xl'>{currentMonth}</div>
+			<div className="text-2xl">{currentMonth}</div>
 
 			<div className="flex justify-between mt-6">
-			<div>
+				<div>
 					{perc < 0 ? (
 						<ArrowDownwardIcon className="featuredIcon negative text-red-600" />
 					) : (

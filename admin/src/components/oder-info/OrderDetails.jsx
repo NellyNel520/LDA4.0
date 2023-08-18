@@ -1,20 +1,14 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { useDispatch } from 'react-redux'
+
 import { useLocation } from 'react-router-dom'
-import { useState } from 'react'
-import { useNavigate } from 'react-router'
+
 import moment from 'moment'
 import OrderProducts from './OrderProducts'
 
 const OrderDetails = () => {
 	const location = useLocation()
 	const id = location.pathname.split('/')[2]
-	const [status, setStatus] = useState('')
-	// const [order, setOrder] = useState({})
-
-	const dispatch = useDispatch()
-	let navigate = useNavigate()
 
 	const order = useSelector((state) =>
 		state.order.orders.find((order) => order._id === id)
@@ -30,9 +24,6 @@ const OrderDetails = () => {
 				Order Details
 			</h1>
 			<div className="p-4 bg-blue-50 dark:bg-gray-800 dark:text-gray-50 border border-blue-500 dark:border-gray-500 rounded-lg shadow-md">
-				{/* <h4 className="text-lg font-semibold"></h4> */}
-
-				{/* {orders.slice(0, 60).map((order) => ( */}
 				<div className="mb-10">
 					<div className="order rounded ">
 						<div className="orderTop bg-[#316dc2] rounded mb-5 py-6 flex-wrap lg:flex border text-md lg:text-xl justify-between">
@@ -75,7 +66,6 @@ const OrderDetails = () => {
 						<OrderProducts order={order} />
 					</div>
 				</div>
-				{/* ))} */}
 			</div>
 		</div>
 	)

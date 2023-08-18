@@ -4,10 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { login } from '../services/apiCalls'
 
-
-
 const Login = () => {
-  let navigate = useNavigate()
+	const navigate = useNavigate()
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const dispatch = useDispatch()
@@ -18,14 +16,10 @@ const Login = () => {
 		login(dispatch, { email, password })
 		navigate('/home')
 	}
- 
+
 	return (
 		<div className="regContainer font-play">
 			<div className="flex flex-col items-center justify-center px-[2rem] py-8 mx-auto md:h-screen lg:py-0">
-				{/* <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-          <img className="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo" />
-          Flowbite    
-      </a> */}
 				<div className="regWrapper w-full  rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0 ">
 					<div className="p-10 space-y-4 md:space-y-6 sm:p-8">
 						<p className=" text-center font-bold  font-play text-blue-600 md:text-[3rem] ">
@@ -69,13 +63,10 @@ const Login = () => {
 
 							<button
 								onClick={handleClick}
-								disabled={isFetching}
 								className="w-full text-white bg-blue-500 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
 							>
 								Login
 							</button>
-
-							
 						</form>
 					</div>
 				</div>

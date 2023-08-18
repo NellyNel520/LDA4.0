@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app'
+import { getStorage } from 'firebase/storage'
 
 // import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -7,18 +8,15 @@ import { initializeApp } from 'firebase/app'
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Your web app's Firebase configuration
 const firebaseConfig = {
-	apiKey: 'AIzaSyD2gcQ4WlYvgkaTxP0xvXqGRiryjLxQWbA',
-	authDomain: 'lda-ecommerceapp.firebaseapp.com',
-	projectId: 'lda-ecommerceapp',
-	storageBucket: 'lda-ecommerceapp.appspot.com',
-	messagingSenderId: '785239612824',
-	appId: '1:785239612824:web:b54744b9afb80c66a11fed',
+	apiKey: 'AIzaSyD2PedUQjUSnSavXuF-NvnJF6h1Ed_VSXY',
+	authDomain: 'lda4-2e810.firebaseapp.com',
+	projectId: 'lda4-2e810',
+	storageBucket: 'lda4-2e810.appspot.com',
+	messagingSenderId: '1036178258406',
+	appId: '1:1036178258406:web:5eea378d7b83069cd03e27',
 }
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig)
-// const analytics = getAnalytics(app);
-
-export default app
-// export const storage = getStorage()
+export const app = initializeApp(firebaseConfig)
+export const storage = getStorage()

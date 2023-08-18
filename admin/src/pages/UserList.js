@@ -23,9 +23,7 @@ const UserList = ({ user }) => {
 		getUsers(dispatch)
 	}, [dispatch])
 
-	// useEffect(() => {
-	// 	getUsers(dispatch)
-	// }, [dispatch])
+
 
 	// ***Previous Delete function with redux***
 	// const handleDelete = (id) => {
@@ -53,7 +51,7 @@ const UserList = ({ user }) => {
 			renderCell: (params) => {
 				return (
 					<div className="userListUser text-white font-play">
-						{/* <img className="userListImg" src={params.row.avatar} alt="" /> */}
+						
 						<AccountCircleIcon className="userListImg" />
 						{params.row.name}
 					</div>

@@ -58,12 +58,7 @@ const OrderProducts = ({order}) => {
 													<span className=" py-1 px-3.5 text-lg md:text-2xl">
 													qty:
 													</span>
-													{/* <input
-													className="h-8 w-8 border bg-white text-center text-xs outline-none"
-													type="number"
-													value="2"
-													min="1"
-												/> */}
+												
 													<ProductAmount className="">
 														{product.quantity}
 													</ProductAmount>
@@ -73,12 +68,7 @@ const OrderProducts = ({order}) => {
 													<p className="text-xl">
 														${(product.price * product.quantity).toFixed(2) }
 													</p>
-													{/* <DeleteIcon
-														className="hover:fill-red-400"
-														onClick={() => {
-															dispatch(removeItem(product._id))
-														}}
-													/> */}
+												
 												</div>
 											</div>
 										</div>
