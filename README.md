@@ -14,10 +14,10 @@ The main goal of this project is to provide a robust and scalable E-commerce sol
 
 ##### ***Deployment***
 The E-commerce App itself was deployed and can be viewed [here](https://londondiorapparel-4-0.onrender.com )
-feel free to create an account and place a mock order using the stripe test payment card info. 
-Card number: 4242 4242 4242 4242
-Use a valid future date, such as 12/34.
-Use any three-digit CVC
+You can create an account and place a mock order using the stripe test payment card info. 
+   * Card number: 4242 4242 4242 4242
+   * Experation: Use a valid future date, such as 12/34.
+   * CVC: Use any three-digit CVC
 
 The Admin Dashboard was deployed and can be view [here](https://admin-lda4-0.onrender.com/)
 
