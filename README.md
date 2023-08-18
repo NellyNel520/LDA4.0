@@ -19,7 +19,7 @@ You can create an account and place a mock order using the stripe test payment c
    * Experation: Use a valid future date, such as 12/34.
    * CVC: Use any three-digit CVC
 
-The Admin Dashboard was deployed and can be view [here](https://admin-lda4-0.onrender.com/)
+The Admin Dashboard was deployed and can be view [here](https://admin-lda.onrender.com)
 
 * Admin dashboard is restricted to admin users only. In order to view the applications complete functionality, use the login info below
     * Email: admin@email.com
